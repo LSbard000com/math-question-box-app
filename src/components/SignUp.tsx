@@ -31,14 +31,12 @@ const SignUp = () => {
         setAlert(newpass === newpassConfirm ? false : true)
     },[newpass, newpassConfirm])
 
-    // メールアドレスとパスワードが入力完了したら登録ボタンを入力にokクラスを付与
-    const [ok, setOk] = useState<boolean>(false)
+    // メールアドレスとパスワードが入力完了したら登録ボタンを入力可能に
+    const [isDisabled, setIsDisabled] = useState(true);
 
-    useEffect(() => {
-        if(alert){
-            
-        }
-    },[alert])
+    const toggleDisabled = () => {
+        setIsDisabled(!isDisabled);
+    };
 
   return (
     <div className='signup'>
@@ -61,8 +59,8 @@ const SignUp = () => {
                 </div>
             </form>
             <hr/>
-            <div className={`submit ${ok ? 'ok' : ''}`}>
-                <button id='signup-btn' disabled>登録する</button>
+            <div className='submit'>
+                <button id='signup-btn'>登録する</button>
             </div>
             <p>
                 <span onClick={handleClick}>&lt;&lt;ログイン画面に戻る</span>

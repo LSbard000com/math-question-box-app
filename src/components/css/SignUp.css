@@ -95,12 +95,12 @@
     transition-duration: 0.3s;
 }
 
-.signup .signup-area .ok #signup-btn {
+.signup .signup-area .submit #signup-btn {
     background-color: #fff;
 
 }
 
-.signup .signup-area .ok #signup-btn:hover {
+.signup .signup-area .submit #signup-btn:hover {
     background-color: #eee;
 }
 
