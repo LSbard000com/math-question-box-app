@@ -1,0 +1,114 @@
+.signup{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background-color: #f3f4ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup .signup-area {
+    border: 1px solid #666;
+    border-radius: 10px;
+    width: 400px;
+    height: 520px;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px #666;
+}
+
+.signup .signup-area h1 {
+    font-family: "Zen Kurenaido", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: 60px 0 0 0;
+}
+
+.signup .signup-area p {
+    text-align: center;
+    margin: 10px 0 30px 0;
+}
+
+.signup .signup-area form {
+    padding: 0 30px;
+    margin-bottom: 30px;
+}
+
+.signup .signup-area form .form-group {
+    margin-bottom: 10px;
+}
+
+.signup .signup-area form .form-group label{
+    display: block;
+    font-size: 10pt;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.signup .signup-area form .form-group input{
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+
+.signup .signup-area form .form-group p{
+    margin: 0;
+    text-align: left;
+    font-size: 8pt;
+    color: red;
+    display: none;
+}
+
+.signup .signup-area form .alert p {
+    display: block;
+}
+
+
+.signup .signup-area .alert #password-confirm{
+    border-color: red;
+}
+
+.signup .signup-area .submit {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.signup hr {
+    margin: 0px auto 10px auto;
+    width: 95%;
+    opacity: 0.7;
+}
+
+.signup .signup-area .submit button {
+    width: 150px;
+    height: 40px;
+    font-size: larger;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px #ddd;
+    border: 1px solid #666;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+}
+
+.signup .signup-area .ok #signup-btn {
+    background-color: #fff;
+
+}
+
+.signup .signup-area .ok #signup-btn:hover {
+    background-color: #eee;
+}
+
+.signup .signup-area p span{ 
+    font-size: 10pt;
+    cursor: pointer;
+}
+
+.signup .signup-area p span:hover {
+    font-weight: bold;
+}
