@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './css/Login.css'
-import { app } from './FIrebase'
 import { getAuth, signInWithEmailAndPassword, Auth,} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { app } from './Firebase'
 
 const auth: Auth = getAuth(app);
 
@@ -19,11 +19,10 @@ const Login = () => {
     }
 
     // ログインボタンクリックで認証
-    const registerUser = async () => {
+    const login = async () => {
         if(email !== '' && pass !== ''){
             try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, pass)
-                console.log(userCredential.user)
+                await signInWithEmailAndPassword(auth, email, pass)
                 navigate('/')
             } catch(error:unknown) {
                 if (error instanceof Error) {
@@ -63,7 +62,7 @@ const Login = () => {
             <hr/>
             <div className='submit'>
                 <button id='signup-btn' onClick={handleClick}>新規登録</button>
-                <button id='login-btn' onClick={registerUser}>ログイン</button>
+                <button id='login-btn' onClick={login}>ログイン</button>
             </div>
         </div> 
     </div>

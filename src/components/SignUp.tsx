@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './css/SignUp.css'
+import { app } from './Firebase'
+import { getAuth, createUserWithEmailAndPassword, Auth } from 'firebase/auth' 
 import { useNavigate } from 'react-router-dom'
+
+const auth: Auth = getAuth(app)
 
 const SignUp = () => {
     // ログイン画面に戻る
@@ -11,8 +15,8 @@ const SignUp = () => {
 
     // 入力値をセット
     const [newEmail, setNewEmail] = useState<string>('')
-    const [newpass, setNewPass] = useState<string>('')
-    const [newpassConfirm, setNewPassConfirm] = useState<string>('')
+    const [newPass, setNewPass] = useState<string>('')
+    const [newPassConfirm, setNewPassConfirm] = useState<string>('')
 
     const handleEmailChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setNewEmail(e.target.value)
@@ -24,19 +28,34 @@ const SignUp = () => {
         setNewPassConfirm(e.target.value)
     }
 
+    // 登録ボタンでアカウント新規登録
+    const register = async () => {
+        try {
+            await createUserWithEmailAndPassword(auth, newEmail, newPass);
+            navigate('/');
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                navigate('/login');
+                console.log('登録に失敗しました:', error.message);
+            } else {
+                console.log('予期しないエラーが発生しました');
+            }
+        }
+    }
+
     // パスワードが一致しなかったときに確認用にalertクラスを付与
     const [alert , setAlert] = useState<boolean>(false)
     
     useEffect(() => {
-        setAlert(newpass === newpassConfirm ? false : true)
-    },[newpass, newpassConfirm])
+        setAlert(newPass === newPassConfirm ? false : true)
+    },[newPass, newPassConfirm])
 
     // メールアドレスとパスワードが入力完了したら登録ボタンを入力可能に
     const [isDisabled, setIsDisabled] = useState(true);
 
-    const toggleDisabled = () => {
-        setIsDisabled(!isDisabled);
-    };
+    useEffect(() => {
+        setIsDisabled(alert || newPass === '' ? true : false )
+    }) 
 
   return (
     <div className='signup'>
@@ -59,8 +78,8 @@ const SignUp = () => {
                 </div>
             </form>
             <hr/>
-            <div className='submit'>
-                <button id='signup-btn'>登録する</button>
+            <div className={`submit ${isDisabled ? '' : 'ok'}`}>
+                <button id='signup-btn' disabled={isDisabled} onClick={register}>登録する</button>
             </div>
             <p>
                 <span onClick={handleClick}>&lt;&lt;ログイン画面に戻る</span>
