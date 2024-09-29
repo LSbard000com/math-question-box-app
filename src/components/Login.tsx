@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import './css/Login.css'
-import { getAuth, signInWithEmailAndPassword, Auth,} from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { app } from './Firebase'
-
-const auth: Auth = getAuth(app);
+import { auth } from './Firebase'
 
 const Login = () => {
     const navigate = useNavigate();

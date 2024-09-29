@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './css/SignUp.css'
-import { app } from './Firebase'
-import { getAuth, createUserWithEmailAndPassword, Auth } from 'firebase/auth' 
+import { auth } from './Firebase'
+import { createUserWithEmailAndPassword } from 'firebase/auth' 
 import { useNavigate } from 'react-router-dom'
-
-const auth: Auth = getAuth(app)
 
 const SignUp = () => {
     // ログイン画面に戻る
