@@ -1,0 +1,72 @@
+.header {
+    width: 100%;
+}
+
+.header .header-area {
+    width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.header .header-area .title {
+    margin: 20px 0;
+    font-size: 30pt;
+    font-family: "Zen Kurenaido", sans-serif;
+}
+
+.header .header-area .title a {
+    text-decoration: none;
+    color: black;
+}
+
+.header .header-area .header-nav {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.header .header-area .header-nav ul {
+    margin-bottom: 10px;
+    padding: 0;
+    display: flex;
+    list-style: none;
+}
+
+.header .header-area .header-nav ul li {
+    margin: 0 20px;
+}
+
+.header .header-area .header-nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.header .header-area .acount {
+    height: 100%;
+    width: 250px;
+    margin: 0 50px 0 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.header .header-area .acount .img-area {
+    height: 70px;
+    width: 70px;
+    border: 1px solid #aaa; 
+    border-radius: 100%;
+}
+
+.header .header-area .acount .img-area .plofile-img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.header .header-area .acount .user-info {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
