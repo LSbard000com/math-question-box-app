@@ -7,6 +7,8 @@ import { app } from './Firebase'
 const auth: Auth = getAuth(app);
 
 const Login = () => {
+    const navigate = useNavigate();
+
     // メールアドレスとパスワードの入力値をセット
     const [email, setEmail] = useState<string>('')
     const [pass, setPass] = useState<string>('')
@@ -18,29 +20,30 @@ const Login = () => {
         setPass(e.target.value)
     }
 
+    // 未入力項目がある場合にalertクラスを付与
+    const [alert, setAlert] = useState<boolean>(false)
+
     // ログインボタンクリックで認証
     const login = async () => {
         if(email !== '' && pass !== ''){
+            setAlert(false)
             try {
                 await signInWithEmailAndPassword(auth, email, pass)
                 navigate('/')
             } catch(error:unknown) {
                 if (error instanceof Error) {
-                    navigate('/login');
                     console.log('ログインに失敗しました:', error.message);
+                    navigate('/login');
                 } else {
                     console.log('予期しないエラーが発生しました');
                 }
             }
         } else {
-            console.log('未入力項目があります')
+            setAlert(true)
         } 
     }
 
-
-
     // 新規登録ボタンでサインインページへ遷移
-    const navigate = useNavigate();
     const handleClick = () => {
     navigate('/signup')
 }
@@ -49,7 +52,7 @@ const Login = () => {
         <div className='login-area'>
             <h1>みんなの数学質問箱</h1>
             <p>- ログイン -</p>
-            <form>
+            <form className={alert ? 'alert' : ''}>
                 <div className='form-group'>
                     <label>メールアドレス</label>
                     <input type="email" id="email" placeholder='example@email.com' onChange={handleEmailChange}/>
@@ -58,6 +61,7 @@ const Login = () => {
                     <label>パスワード</label>
                     <input type="password" id="password" onChange={handlePassChange}/>
                 </div>
+                <p>※未入力項目があります</p>
             </form>
             <hr/>
             <div className='submit'>
