@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './css/SignUp.css'
-import { auth } from './Firebase'
+import { auth, db } from './Firebase'
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth' 
 import { useNavigate } from 'react-router-dom'
 
@@ -33,7 +34,18 @@ const SignUp = () => {
     // 登録ボタンでアカウント新規登録
     const register = async () => {
         try {
-            await createUserWithEmailAndPassword(auth, newEmail, newPass);
+            // Authでユーザー作成
+            const userCredential = await createUserWithEmailAndPassword(auth, newEmail, newPass);
+            const user = userCredential.user;
+
+            // Firestoreにユーザーデータを保存
+            await setDoc(doc(db, "users", user.uid), {
+                email: newEmail,
+                password: newPass,
+                username: newName,
+                createdAt: serverTimestamp(),
+            })
+
             navigate('/');
         } catch (error: unknown) {
             if (error instanceof Error) {
@@ -79,7 +91,7 @@ const SignUp = () => {
             <form>
                 <div className='form-group'>
                     <label>メールアドレス</label>
-                    <input type="email" id="email" placeholder='e1xample@email.com' onChange={handleEmailChange} />
+                    <input type="email" id="email" placeholder='example@email.com' onChange={handleEmailChange} />
                 </div>
                 <div className='form-group'>
                     <label>ユーザー名</label>
