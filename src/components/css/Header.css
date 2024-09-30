@@ -1,9 +1,14 @@
+:root{
+    --logincolor: #97cdf3;
+}
+
 .header {
     width: 100%;
 }
 
 .header .header-area {
-    width: 1300px;
+    min-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -11,7 +16,7 @@
 }
 
 .header .header-area .title {
-    margin: 20px 0;
+    margin: 20px;
     font-size: 30pt;
     font-family: "Zen Kurenaido", sans-serif;
 }
@@ -32,6 +37,7 @@
     padding: 0;
     display: flex;
     list-style: none;
+    cursor: pointer;
 }
 
 .header .header-area .header-nav ul li {
@@ -43,9 +49,24 @@
     color: black;
 }
 
+.header .header-area .header-nav .sign {
+    height: 40px;
+    margin-bottom: 5px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #ddd;
+    background-color: #d4e9f8;
+    transition-duration: 0.2s;
+}
+
+.header .header-area .header-nav .sign:hover{
+    background-color: var(--logincolor);
+    font-weight: bolder;
+}
+
 .header .header-area .acount {
     height: 100%;
-    width: 250px;
+    width: 300px;
     margin: 0 50px 0 0;
     display: flex;
     align-items: flex-end;
