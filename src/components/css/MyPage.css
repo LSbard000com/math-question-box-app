@@ -1,0 +1,61 @@
+.mypage{
+    width: 1000px;
+    margin-inline: auto;
+}
+
+.mypage .mydata{
+    margin-top: 50px;
+}
+
+.mypage .mydata .user-header{
+    width: 800px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mypage .mydata .user-header .plofile-img{
+    width: 200px;
+    height: 200px;
+    margin-left: 100px;
+    border: 1px solid #aaa;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.mypage .mydata .user-header .plofile-img img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.mypage .mydata .user-header .user-info {
+    margin-right: 150px;
+}
+
+.mypage .mydata .user-header .user-info .useremail {
+    margin-bottom: 20px;
+}
+
+.mypage .mydata .user-header .user-info .useremail label {
+    margin-bottom: 5px;
+}
+
+.mypage .mydata .user-header .user-info .useremail p {
+    margin: 0;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.mypage .mydata .user-header .user-info .username label {
+    margin-bottom: 5px;
+}
+
+.mypage .mydata .user-header .user-info .username p {
+    margin: 0;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+
