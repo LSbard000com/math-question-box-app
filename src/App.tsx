@@ -15,7 +15,7 @@ function App() {
       element: <TopPage />
     },
     { 
-      path: '/mypage',
+      path: '/mypage/:uid',
        element: <MyPage />
     },
     { 
