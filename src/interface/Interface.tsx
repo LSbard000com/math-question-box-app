@@ -9,3 +9,7 @@ export interface UserProfile {
 export interface AuthContextType {
     currentUser:  User | null;
 }
+
+export interface ProtectedRouteProps {
+    element: React.ReactNode;
+  } 

@@ -5,7 +5,10 @@ import { auth } from './Firebase'
 
 const AuthContext = createContext<AuthContextType>({currentUser: null})
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => {
+  const context = useContext(AuthContext)
+  return context.currentUser
+}
 
 const ContextProvider: React.FC<{ children: React.ReactNode }> = ({children}) => {
     const [currentUser, setCurrentUser] = useState<User | null>(null)
