@@ -1,11 +1,11 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Footer from './components/Footer';
-import Header from './components/Header';
 import TopPage from './components/TopPage';
 import MyPage from './components/MyPage';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import CreatePost from './components/CreatePost';
+import ContextProvider from './components/ContextProvider';
 
 
 function App() {
@@ -25,13 +25,17 @@ function App() {
     { 
       path: '/signup', 
       element: <SignUp />,
+    },
+    {
+      path: '/post',
+      element: <CreatePost />
     }
   ])
 
   return (
-  <div>
+  <ContextProvider>
     <RouterProvider router={routes} />
-  </div>
+  </ContextProvider>
   )
 }
 
