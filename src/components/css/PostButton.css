@@ -1,0 +1,43 @@
+:root{
+    --logincolor: #97cdf3;
+}
+
+.navbutton {
+    height: 50px;
+    width: 50px;
+    border: 1px solid #aaa;
+    border-radius: 100%;
+    background-color: var(--logincolor);
+    box-shadow: 2px 2px 3px #666;
+    opacity: 0.7;
+    position: fixed;
+    right: 20%;
+    bottom: 20%;
+    z-index: 3;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.navbutton:hover{
+    opacity: 1;
+}
+
+.navbutton span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    border-radius: 5px;
+    background-color: #000;
+    position: absolute;
+}
+
+.navbutton span:nth-child(1){
+    top: 23.5px;
+    left: 10px;
+}
+
+.navbutton span:nth-child(2){
+    top: 23.5px;
+    left: 10px;
+    transform: rotate(90deg);
+}
