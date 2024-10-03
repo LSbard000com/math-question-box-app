@@ -36,7 +36,7 @@ function App() {
     },
     {
       path: '/post',
-      element: <CreatePost />
+      element: <ProtectedRoute element={<CreatePost />} />
     }
   ])
 
