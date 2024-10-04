@@ -12,4 +12,8 @@ export interface AuthContextType {
 
 export interface ProtectedRouteProps {
     element: React.ReactNode;
-  } 
+} 
+
+export interface PageTitleProps {
+    title: string;
+}

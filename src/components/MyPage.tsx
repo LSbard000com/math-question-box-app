@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import { UserProfile } from '../interface/Interface'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from './Firebase'
+import PageTitle from './PageTitle'
 
 const MyPage = () => {
   const { uid } = useParams<{ uid: string}>();
@@ -33,6 +34,7 @@ const MyPage = () => {
   return (
     <div>
       <Header />
+      <PageTitle title='マイページ' />
       <div className='mypage'>
         <div className='mydata'>
           <div className='user-header'>
