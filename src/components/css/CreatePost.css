@@ -2,6 +2,10 @@
     --logincolor: #97cdf3;
 }
 
+.confirm {
+    display: none;
+}
+
 .post {
     width: 1000px;
     margin-inline: auto;

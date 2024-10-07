@@ -4,12 +4,19 @@ import './css/CreatePost.css'
 import PageTitle from './PageTitle'
 import { category } from './CategoryData'
 import { useNavigate } from 'react-router-dom'
+import PostSubmit from './PostSubmit'
 
 const CreatePost = () => {
   const navigate = useNavigate()
 
   // 投稿文の最低文字数を定義
   const [minNum] = useState<number>(5)
+
+  // 投稿文の内容を保存
+  const [text, setText] = useState<string>('')
+  const handleInput = (e: { target: { value: React.SetStateAction<string> } }) => {
+    setText(e.target.value)
+  } 
 
   // カテゴリの最低選択数を定義
   const [minCheck] = useState<number>(1)
@@ -126,9 +133,9 @@ const CreatePost = () => {
 
   // 投稿ボタンの入力可否を制御
   const [textChecker, setTextChecker] = useState<boolean>(false)
-  const handleInputText = (e: { target: { value: string } }) => {
-    setTextChecker(e.target.value.length < minNum ? false : true)
-  }
+  useEffect(() => {
+    setTextChecker(text.length < minNum ? false : true)
+  },[text])
 
   const [selctedChecker, setSelectedChecker] = useState<boolean>(false)
   useEffect(() => {
@@ -140,15 +147,24 @@ const CreatePost = () => {
     setIsDisabled(textChecker && selctedChecker ? false : true)
   },[textChecker, selctedChecker])
 
+  // 投稿ボタンクリックで確認画面へ
+  const [jumpConfirm, setJumpConfirm] = useState<boolean>(true)
+  const handleClickcConfirm = () => {
+    setJumpConfirm(true)
+  }
+
   return (
     <div>
       <Header />
       <PageTitle title='質問投稿' />
+      <div className={jumpConfirm ? '' : 'confirm'}>
+        <PostSubmit maskClick={()=>setJumpConfirm(false)} text={text} subjects={selectedSubject} />
+      </div>
       <div className='post'>
         <div className='post-group'>
           <label className='post-title'>質問文</label>
           <div className='content'>
-            <textarea placeholder='わからない問題や、気になることを投稿してみよう！' onChange={handleInputText}></textarea>
+            <textarea placeholder='わからない問題や、気になることを投稿してみよう！' onChange={handleInput}></textarea>
             <p>※{minNum}文字以上記入してください。</p>
           </div>
         </div>
@@ -196,7 +212,7 @@ const CreatePost = () => {
         </div>
         <div className={`btn ${isDisabled ? '' : 'ok'}`}>
           <button className='cancel' onClick={() => navigate('/')}>キャンセル</button>
-          <button className='submit' disabled={isDisabled} >投稿する</button>
+          <button className='submit' disabled={isDisabled} onClick={handleClickcConfirm} >確認する</button>
         </div>
       </div>
     </div>
