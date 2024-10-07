@@ -1,0 +1,111 @@
+:root{
+    --logincolor: #97cdf3;
+}
+
+.post {
+    width: 1000px;
+    margin-inline: auto;
+}
+
+.post .post-group {
+    width: 800px;
+    margin: 0 auto 20px;
+}
+
+.post .post-group .post-title {
+    margin: 10px 0;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.post .post-group label {
+    display: block;
+}
+
+.post .post-group .content {
+    height: 300px;
+    padding: 10px 5px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    resize: vertical;
+    overflow: hidden;
+}
+
+.post .post-group .content textarea {
+    display: block;
+    width: 95%;
+    height: 90%;
+    margin-inline: auto;
+    border: none;
+    resize: none;
+}
+
+.post .post-group textarea::placeholder {
+    font-size: 12pt;
+}
+
+.post .post-group p {
+    margin: 0 5px 10px 0;
+    text-align: right;
+}
+
+.post .post-group .category {
+    padding: 10px 5px;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+
+.post .post-group .category label p {
+    display: inline;
+    font-weight: bold;
+}
+
+.post .post-group .category label .detail {
+    width: 90%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-left: 20px;
+    transition-duration: 0.5s;
+}
+
+.post .post-group .category .checked .detail {
+    max-height: 800px;
+    opacity: 1;
+}
+
+.post .btn {
+    width: 800px;
+    margin: 20px auto;
+    display: flex;
+    gap: 30px;
+    justify-content: right;
+    align-items: center;
+}
+
+.post .btn button {
+    width: 150px;
+    height: 40px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 14pt;
+    font-weight: bold;
+    transition-duration: .3s;
+}
+
+.post .btn .cancel {
+    background-color: #fff;
+}
+
+.post .btn .submit {
+    background-color: #d4e9f8;
+}
+
+.post .btn .cancel:hover {
+    background-color: var(--logincolor);
+}
+
+.post .ok .submit:hover {
+    background-color: var(--logincolor);
+}
+

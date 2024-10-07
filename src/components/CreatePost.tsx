@@ -115,11 +115,30 @@ const CreatePost = () => {
     setOpenPrimDetail(event.target.checked);
   }
 
+  // その他ボタン
+  const handleOtherClick = () => {
+    if (selectedSubject.includes('O00')) {
+      setSelectedSubject(selectedSubject.filter(itemId => itemId !== 'O00'));
+    } else {
+      setSelectedSubject([...selectedSubject, 'O00']);
+    }
+  }
+
   // 投稿ボタンの入力可否を制御
+  const [textChecker, setTextChecker] = useState<boolean>(false)
+  const handleInputText = (e: { target: { value: string } }) => {
+    setTextChecker(e.target.value.length < minNum ? false : true)
+  }
+
+  const [selctedChecker, setSelectedChecker] = useState<boolean>(false)
+  useEffect(() => {
+    setSelectedChecker(selectedSubject.length === 0 ? false : true)
+  },[selectedSubject])
+
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
   useEffect(() => {
-    setIsDisabled(false)
-  },[])
+    setIsDisabled(textChecker && selctedChecker ? false : true)
+  },[textChecker, selctedChecker])
 
   return (
     <div>
@@ -127,17 +146,17 @@ const CreatePost = () => {
       <PageTitle title='質問投稿' />
       <div className='post'>
         <div className='post-group'>
-          <label>質問文</label>
+          <label className='post-title'>質問文</label>
           <div className='content'>
-            <textarea placeholder='わからない問題や、気になることを投稿してみよう！'></textarea>
+            <textarea placeholder='わからない問題や、気になることを投稿してみよう！' onChange={handleInputText}></textarea>
             <p>※{minNum}文字以上記入してください。</p>
           </div>
         </div>
         <div className='post-group'>
-          <label>カテゴリ</label>
+          <label className='post-title'>カテゴリ</label>
           <div className='category'>
             <label className={openUnivDetail ? 'checked' : ''}>
-              <input type='checkBox' onChange={handleUnivCheckboxChange} />
+              <input type='checkbox' onChange={handleUnivCheckboxChange} />
               <p>大学数学</p>
               <div className='detail'>
                 {univList}
@@ -169,15 +188,15 @@ const CreatePost = () => {
             </label>
             <hr />
             <label>
-              <input type='checkBox' />
+              <input type='checkBox' checked={selectedSubject.includes('O00')} onChange={handleOtherClick} />
               <p>その他</p>
             </label>
             <p>※{minCheck}個以上選択してください。</p>
           </div>
         </div>
-        <div className='btn'>
+        <div className={`btn ${isDisabled ? '' : 'ok'}`}>
           <button className='cancel' onClick={() => navigate('/')}>キャンセル</button>
-          <button className='submit' disabled={isDisabled} onClick={() => console.log(selectedSubject)}>投稿する</button>
+          <button className='submit' disabled={isDisabled} >投稿する</button>
         </div>
       </div>
     </div>
