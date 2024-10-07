@@ -3,47 +3,10 @@ type Item = {
     subject: string;
 }
 
-type UnivSubjectType = {
-    '代数学': Item[];
-    '解析学': Item[];
-    '幾何学': Item[];
-    '統計学': Item[];
-}
-
-type HighSubjectType =  {
-    '数学Ⅰ': Item[];
-    '数学Ⅱ': Item[];
-    '数学Ⅲ': Item[];
-    '数学A': Item[];
-    '数学B': Item[];
-    '数学C': Item[];
-}
-
-type JuniorSubjectType = {
-    '中学1年': Item[];
-    '中学2年': Item[];
-    '中学3年': Item[];
-}
-
-type PrimSubjectType = {
-    '小学1年': Item[];
-    '小学2年': Item[];
-    '小学3年': Item[];
-    '小学4年': Item[];
-    '小学5年': Item[];
-    '小学6年': Item[];
-}
-
-type CategoryType = {
-    univ: UnivSubjectType;
-    high: HighSubjectType;
-    junior: JuniorSubjectType;
-    prim: PrimSubjectType;
-    others: Record<string, never>; // others は空のオブジェクト
-  };
+export type CategoryType = {[key: string]: { [key: string] : Item[] }}
 
 export const category:CategoryType = {
-    univ: 
+    'univ': 
         {
             '代数学':
                 [
@@ -82,7 +45,7 @@ export const category:CategoryType = {
                     {id: 'u405', subject: '離散数学'}
                 ]
         },
-    high: 
+    'high': 
         {
             '数学Ⅰ':
                 [
@@ -171,7 +134,7 @@ export const category:CategoryType = {
                     {id: 'h610', subject: '行列'}
                 ]
         },
-    junior: 
+    'junior': 
         {
             '中学1年':
                 [
@@ -203,7 +166,7 @@ export const category:CategoryType = {
                     {id: 'j308', subject: '標本平均'}
                 ],
         },
-    prim:
+    'prim':
         {
             '小学1年': 
                 [
@@ -280,5 +243,5 @@ export const category:CategoryType = {
                 ]
         }
     ,
-    others:{}
+    'others':{}
 }
