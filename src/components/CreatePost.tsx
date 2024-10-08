@@ -148,7 +148,7 @@ const CreatePost = () => {
   },[textChecker, selctedChecker])
 
   // 投稿ボタンクリックで確認画面へ
-  const [jumpConfirm, setJumpConfirm] = useState<boolean>(true)
+  const [jumpConfirm, setJumpConfirm] = useState<boolean>(false)
   const handleClickcConfirm = () => {
     setJumpConfirm(true)
   }

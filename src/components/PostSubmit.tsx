@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import './css/PostSubmit.css'
 import { useNavigate } from 'react-router-dom'
 import { category } from './CategoryData'
+import { useAuth } from './ContextProvider'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { db } from './Firebase'
 
 type ChildProps = {
     maskClick: () => void;
@@ -9,27 +12,55 @@ type ChildProps = {
     subjects: string[];
 }
 
-const PostSubmit: React.FC<ChildProps> = ({maskClick, text, subjects}) => {
-    const navigate = useNavigate()
+// 受け取ったカテゴリ配列のIDから単元の値を習得して配列に格納
 
-    // 受け取ったカテゴリ配列のIDから単元の値を習得して配列に格納
+export const findSubject = (id:string): string | null => {
     const schoolKinds = ['univ', 'high', 'junior', 'prim']
-    const findSubject = (id:string): string | null => {
-        for(const school of schoolKinds){
-            const categories = category[school]
-            for(const subjectCategory in categories){
-                const result = categories[subjectCategory].find((item: { id: string }) => item.id === id)
-                if(result){
-                   return result.subject
-                }
+    for(const school of schoolKinds){
+        const categories = category[school]
+        for(const subjectCategory in categories){
+            const result = categories[subjectCategory].find((item: { id: string }) => item.id === id)
+            if(result){
+                return result.subject
             }
         }
-        return null
     }
+    return null
+}
+
+const PostSubmit: React.FC<ChildProps> = ({maskClick, text, subjects}) => {
+    const navigate = useNavigate()
 
     useEffect(() => {
         subjects.map(findSubject)
     },[subjects])
+
+    // 投稿ボタンでfirestoreにデータを保存
+    const currentUser = useAuth()
+    console.log(currentUser?.uid)
+
+    const handleSubmit = async () => {
+        if(currentUser){
+            try{
+                await addDoc(collection(db, "posts"),{
+                    content: text,
+                    userId: currentUser.uid,
+                    categories: subjects,
+                    createdAt: serverTimestamp(),
+                })
+                navigate('/')
+            } catch(error:unknown) {
+                if(error instanceof Error){
+                    navigate('/error', {state: {message: error.message}})
+                } else {
+                    navigate('/error', {state: {message: "予期せぬエラーが発生しました"}})
+                }
+                
+            }
+        } else {
+            navigate('/login')
+        }
+    }
     
   return (
     <div className='post-submit'>
@@ -53,7 +84,7 @@ const PostSubmit: React.FC<ChildProps> = ({maskClick, text, subjects}) => {
             </div>
             <div className='btn'>
                 <button onClick={maskClick}>戻る</button>
-                <button>投稿する</button>
+                <button onClick={handleSubmit}>投稿する</button>
             </div>
         </div>
         <div id='mask'></div>
