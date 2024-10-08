@@ -1,0 +1,37 @@
+.all-posts{
+    width: 1000px;
+    margin-inline: auto;
+}
+
+.post-area {
+    width: 800px;
+    margin-inline: auto;
+}
+
+.post-area .post {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.post-area .post .post-category ul {
+    margin: 5px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.post-area .post .post-category ul li {
+    font-size: 10pt;
+    padding: 0 10px;
+    border: 1px solid #666;
+    border-radius: 15px;
+    box-shadow: .5px .5px 1px #666;
+}
+
+.post-area .post .post-time {
+    margin: 5px 0 5px 20px;
+    font-size: 12pt;
+    color: #999;
+}
