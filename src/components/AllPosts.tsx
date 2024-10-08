@@ -37,7 +37,7 @@ const AllPosts = () => {
                             })
                             }
                     </div>
-                    <hr/>
+                    <hr style={{ marginBottom: '20px'}}/>
                 </div>
             )
         })

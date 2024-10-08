@@ -18,16 +18,30 @@
     padding: 0;
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 5px;
     flex-wrap: wrap;
 }
 
 .post-area .post .post-category ul li {
     font-size: 10pt;
+    margin-right: 20px;
     padding: 0 10px;
     border: 1px solid #666;
     border-radius: 15px;
     box-shadow: .5px .5px 1px #666;
+}
+
+.post-area .post .post-content {
+    width: 95%; 
+    margin: 15px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    cursor: pointer;
+}
+
+.post-area .post .post-content:hover{
+    text-decoration: underline;
 }
 
 .post-area .post .post-time {
