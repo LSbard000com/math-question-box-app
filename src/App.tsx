@@ -37,8 +37,7 @@ function App() {
     },
     {
       path: '/post',
-      // element: <ProtectedRoute element={<CreatePost />} />
-      element: <CreatePost />
+      element: <ProtectedRoute element={<CreatePost />} />
     },
     {
       path: '/error',
