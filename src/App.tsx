@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import CreatePost from './components/CreatePost';
 import ContextProvider, { useAuth } from './components/ContextProvider';
 import { ProtectedRouteProps } from './interface/Interface';
+import ErrorPage from './components/ErrorPage';
 
 
 function App() {
@@ -38,6 +39,10 @@ function App() {
       path: '/post',
       // element: <ProtectedRoute element={<CreatePost />} />
       element: <CreatePost />
+    },
+    {
+      path: '/error',
+      element: <ErrorPage />
     }
   ])
 
