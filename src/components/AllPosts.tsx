@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import './css/AllPosts.css'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from './Firebase'
 import { findSubject } from './PostSubmit'
 
 const AllPosts = () => {
     const [posts, setPosts] = useState<React.ReactNode>()
-    const allPosts = async () => {
-        const querySnapshot = await getDocs(collection(db, 'posts'))
+        const allPosts = async () => {
+            const postsQuery = query(
+                collection(db, 'posts'),
+                orderBy('createdAt', 'desc')
+            )
+
+        const querySnapshot = await getDocs(postsQuery)
 
         const postElements = querySnapshot.docs.map((doc) => {
             const timestamp = doc.data().createdAt
