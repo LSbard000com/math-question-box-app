@@ -1,16 +1,26 @@
 import React from 'react'
 import { PageTitleProps } from '../interface/Interface'
+import './css/PageTitle.css'
 
 const PageTitle: React.FC<PageTitleProps> = ({ title }) => {
-    const titleStyle = {
-        width: '1000px',
-        height: '50px',
-        margin: '20px auto',
-    }
 
   return (
-    <div>
-      <h2 style={titleStyle}>{title}</h2>
+    <div className='pagetitle'>
+      <div className='pagetitle-area'>
+        <div className='title'>
+          <h2>{title}</h2>
+        </div>
+        <div className='search'>
+          <div className='search-area'>
+            <input placeholder='検索' />
+          </div>
+          <div className='search-btn'>
+            <button>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
