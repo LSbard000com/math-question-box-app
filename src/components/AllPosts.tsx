@@ -3,8 +3,10 @@ import './css/AllPosts.css'
 import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from './Firebase'
 import { findSubject } from './PostSubmit'
+import { useNavigate } from 'react-router-dom'
 
 const AllPosts = () => {
+    // すべての投稿を投稿日時順に表示
     const [posts, setPosts] = useState<React.ReactNode>()
         const allPosts = async () => {
             const postsQuery = query(
@@ -30,7 +32,7 @@ const AllPosts = () => {
                         </ul>
                         
                     </div>
-                    <div className='post-content'>
+                    <div key={doc.id} onClick={()=>handleViewPage(doc.id)}  className='post-content'>
                         {doc.data().content}
                     </div>
                     <div className='post-time'>
@@ -52,6 +54,14 @@ const AllPosts = () => {
     useEffect(() => {
         allPosts()
     },[])
+
+    // 投稿文をクリックで閲覧ページへ遷移
+    const navigate = useNavigate()
+
+    const handleViewPage = (id:string) => {
+        const viewId = `/view/${id}`
+        navigate(viewId)
+    }
 
   return (
     <div className='all-posts'>
