@@ -15,14 +15,14 @@ type ChildProps = {
 // 受け取ったカテゴリ配列のIDから単元の値を習得して配列に格納
 
 export const findSubject = (id:string): string | null => {
-    const schoolKinds = ['univ', 'high', 'junior', 'prim']
+    const schoolKinds = ['univ', 'high', 'junior', 'prim', 'others']
     for(const school of schoolKinds){
         const categories = category[school]
         for(const subjectCategory in categories){
             const result = categories[subjectCategory].find((item: { id: string }) => item.id === id)
             if(result){
                 return result.subject
-            }
+            } 
         }
     }
     return null
