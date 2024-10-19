@@ -243,5 +243,11 @@ export const category:CategoryType = {
                 ]
         }
     ,
-    'others':{}
+    'others':
+        {
+            'その他':
+            [
+                {id: 'O00', subject: 'その他'}
+            ]
+        }
 }
