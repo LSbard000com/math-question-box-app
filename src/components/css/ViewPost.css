@@ -1,0 +1,146 @@
+:root{
+    --logincolor: #97cdf3;
+}
+
+.post-view-area {
+    width: 800px;
+    margin: 0 auto 40px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    min-height: 300px;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+.post-view-area .post-header {
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.post-view-area .post-header .user-img {
+    width: 50px;
+    height: 50px;
+    margin-left: 50px;
+    border: 1px solid #aaa;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.post-view-area .post-header .user-img img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.post-view-area .post-header .user-name {
+    margin-left: 30px;
+    font-size: 16pt;
+}
+
+.post-view-area hr {
+    width: 95%;
+    margin: 20px auto;
+}
+
+.post-view-area .view-content {
+    width: 95%;
+    margin: 20px auto;
+    white-space: pre-wrap;
+}
+
+.post-view-area .post-category p {
+    font-size: 10pt;
+    width: 100px;
+    margin: 5px 0 5px 20px;
+}
+
+.post-view-area .post-category ul {
+    width: 95%;
+    margin: 10px auto;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.post-view-area .post-category ul li {
+    font-size: 8pt;
+    padding: 2px 10px;
+    border: 1px solid #666;
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px #666;
+}
+
+.post-view-area .answer-btn {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.post-view-area .answer-btn button {
+    width: 90%;
+    height: 30px;
+    font-size: 14px;
+    border: 1px solid #666;
+    border-radius: 3px;
+    background-color: #92bffa;
+    transition-duration: .2s;
+}
+
+.post-view-area .answer-btn button:hover{
+    background-color: #318aff;
+    font-weight: bold;
+}
+
+.answer-area {
+    width: 800px;
+    margin: 0 auto 20px;
+    border: 1px solid #666;
+    border-radius: 3px;
+}
+
+.answer-area .answer-header {
+    width: 100%;
+    height: 50px;
+    background-color: var(--logincolor);
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #666;
+}
+
+.answer-area .answer-header p {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.answer-area .answer-posts {
+    padding: 20px 0;
+}
+
+.answer-area .answer-posts .answerer-data{
+    width: 95%;
+    margin-inline: auto;
+}
+
+.answer-area .answer-posts .answerer-data .answerer-header{
+    margin: 10px 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.answer-area .answer-posts .answerer-data .answerer-header .createdAt{
+    font-size: 12px;
+    color: #666;
+}
+
+.answer-area .answer-posts .answerer-data .content {
+    margin: 20px 0;
+    white-space: pre-wrap;
+}
+
+.create {
+    display: none;
+}
