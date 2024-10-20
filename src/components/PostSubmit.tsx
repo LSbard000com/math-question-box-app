@@ -87,7 +87,7 @@ const PostSubmit: React.FC<ChildProps> = ({maskClick, text, subjects}) => {
                 <button onClick={handleSubmit}>投稿する</button>
             </div>
         </div>
-        <div id='mask'></div>
+        <div className='mask'></div>
     </div>
   )
 }
