@@ -7,8 +7,12 @@ import { UserProfile } from '../../interface/Interface'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../Firebase'
 import PageTitle from '../public/PageTitle'
+import MyQuestion from './MyQuestion'
+import MyAnswer from './MyAnswer'
+import Footer from '../public/Footer'
 
 const MyPage = () => {
+  // ユーザーデータの基本情報の表示
   const { uid } = useParams<{ uid: string}>();
   const [userData, setUserData] = useState<UserProfile | null>(null)
 
@@ -31,6 +35,9 @@ const MyPage = () => {
     getUserData()
   },[uid])
 
+  // 投稿と回答の表示の切り替え
+  const [activeComponent, setActiveComponent] = useState<'myquestion' | 'myanswer'>('myquestion')
+  
   return (
     <div>
       <Header />
@@ -53,8 +60,22 @@ const MyPage = () => {
             </div>
           </div>
         </div>
-        
+        <div className='mypost'>
+          <div className='select'>
+            <div className={`select-btn ${activeComponent === 'myquestion' ? 'selected' : ''}`} onClick={()=>setActiveComponent('myquestion')}>
+              <div>質問</div>
+            </div>
+            <div className={`select-btn ${activeComponent === 'myanswer' ? 'selected' : ''}`} onClick={()=>setActiveComponent('myanswer')}>
+              <div>回答</div>
+            </div>
+          </div>
+          <div className='mypost-display'>
+          {activeComponent === 'myquestion' && <MyQuestion uid={uid} />}
+          {activeComponent === 'myanswer' && <MyAnswer uid={uid}  />}
+          </div>
+        </div>
       </div>
+      <Footer />
     </div>
   )
 }

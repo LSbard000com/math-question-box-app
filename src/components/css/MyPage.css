@@ -4,7 +4,7 @@
 }
 
 .mypage .mydata{
-    margin-top: 50px;
+    margin: 50px 0;
 }
 
 .mypage .mydata .user-header{
@@ -58,4 +58,49 @@
     font-weight: bold;
 }
 
+.mypost {
+    width: 600px;
+    margin: 20px auto;
+}
+
+.mypost .select{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+}
+
+.mypost .select .select-btn {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+    opacity: 0.3;
+    border: 1px solid #666;
+    border-radius: 3px 3px 0 0;
+}
+
+.mypost .select .selected {
+    background-color: #fff;
+    opacity: 1;
+    border: 1px solid #666;
+    border-bottom: none;
+}
+
+.mypost .select .select-btn div {
+    height: 30px;
+    font-size: 22px;
+    font-weight: bold;
+
+}
+
+.mypost .mypost-display {
+    width: 598px;
+    min-height: 200px;
+    border: 1px solid #666;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+}
 

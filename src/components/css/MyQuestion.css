@@ -1,0 +1,41 @@
+ .questions {
+    width: 95%;
+    margin: 0 auto;
+ }
+
+ .questions .question-date {
+    color: #888;
+    font-size: 18px;
+    height: 40px;
+ }
+
+ .questions .question-content {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    cursor: pointer;
+ }
+
+ .questions .question-content:hover {
+    text-decoration: underline;
+ }
+
+ .questions .edit {
+    height: 25px;
+    display: flex;
+    gap: 10px;
+    justify-content: right;
+    align-items: center;
+    margin-right: 30px;
+ }
+
+ .questions .edit i {
+    margin: 5px;
+    color: #666;
+    cursor: pointer;
+ }
+
+ .questions .edit i:hover {
+    color: #333;
+ }
