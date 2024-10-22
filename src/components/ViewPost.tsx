@@ -168,7 +168,7 @@ const ViewPost = () => {
         </div>
         <div className='answer-posts'>
           {answerPostsWithUsernames.length === 0 ?
-            <div>回答はまだありません。</div>
+            <div className='answerer-data'>回答はまだありません。</div>
           :
             answerPostsWithUsernames.map((data) => {
               const timestamp = data.createdAt
