@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Header from './Header'
-import './css/CreatePost.css'
-import PageTitle from './PageTitle'
-import { category } from './CategoryData'
+import Header from '../public/Header'
+import '../css/CreatePost.css'
+import PageTitle from '../public/PageTitle'
+import { category } from '../public/CategoryData'
 import { useNavigate } from 'react-router-dom'
 import PostSubmit from './PostSubmit'
 

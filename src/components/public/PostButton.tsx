@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import './css/PostButton.css'
+import '../css/PostButton.css'
 
 const PostButton = () => {
     const navigate = useNavigate()

@@ -1,14 +1,14 @@
 import './App.css';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-import TopPage from './components/TopPage';
-import MyPage from './components/MyPage';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import CreatePost from './components/CreatePost';
+import TopPage from './components/top/TopPage';
+import MyPage from './components/mypage/MyPage';
+import Login from './components/login/Login';
+import SignUp from './components/signup/SignUp';
+import CreatePost from './components/post/CreatePost';
 import ContextProvider, { useAuth } from './components/ContextProvider';
 import { ProtectedRouteProps } from './interface/Interface';
 import ErrorPage from './components/ErrorPage';
-import ViewPost from './components/ViewPost';
+import ViewPost from './components/view/ViewPost';
 
 
 function App() {

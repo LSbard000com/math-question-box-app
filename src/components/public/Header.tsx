@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import './css/Header.css'
+import '../css/Header.css'
 import { useNavigate } from 'react-router-dom'
-import imageName from './img/kkrn_icon_user_6.png'
-import { auth, db } from './Firebase'
+import imageName from '../img/kkrn_icon_user_6.png'
+import { auth, db } from '../Firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import { onAuthStateChanged, signOut, User } from 'firebase/auth'
 

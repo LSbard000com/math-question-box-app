@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from './Header'
-import PostButton from './PostButton'
-import PageTitle from './PageTitle'
+import Header from '../public/Header'
+import PostButton from '../public/PostButton'
+import PageTitle from '../public/PageTitle'
 import AllPosts from './AllPosts'
-import Footer from './Footer'
+import Footer from '../public/Footer'
 
 const TopPage = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import { PageTitleProps } from '../interface/Interface'
-import './css/PageTitle.css'
+import { PageTitleProps } from '../../interface/Interface'
+import '../css/PageTitle.css'
 
 const PageTitle: React.FC<PageTitleProps> = ({ title }) => {
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './css/PostSubmit.css'
+import '../css/PostSubmit.css'
 import { useNavigate } from 'react-router-dom'
-import { category } from './CategoryData'
-import { useAuth } from './ContextProvider'
+import { category } from '../public/CategoryData'
+import { useAuth } from '../ContextProvider'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
-import { db } from './Firebase'
+import { db } from '../Firebase'
 
 type ChildProps = {
     maskClick: () => void;

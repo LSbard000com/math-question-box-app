@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import './css/SignUp.css'
-import { auth, db } from './Firebase'
+import '../css/SignUp.css'
+import { auth, db } from '../Firebase'
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth' 
 import { useNavigate } from 'react-router-dom'

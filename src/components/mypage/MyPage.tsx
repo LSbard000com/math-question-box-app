@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Header from './Header'
-import './css/MyPage.css'
-import imageName from './img/kkrn_icon_user_6.png'
+import Header from '../public//Header'
+import '../css/MyPage.css'
+import imageName from '../img/kkrn_icon_user_6.png'
 import { useParams } from 'react-router-dom'
-import { UserProfile } from '../interface/Interface'
+import { UserProfile } from '../../interface/Interface'
 import { doc, getDoc } from 'firebase/firestore'
-import { db } from './Firebase'
-import PageTitle from './PageTitle'
+import { db } from '../Firebase'
+import PageTitle from '../public/PageTitle'
 
 const MyPage = () => {
   const { uid } = useParams<{ uid: string}>();
@@ -53,7 +53,7 @@ const MyPage = () => {
             </div>
           </div>
         </div>
-        MyPage
+        
       </div>
     </div>
   )

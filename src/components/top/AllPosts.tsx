@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import './css/AllPosts.css'
+import '../css/AllPosts.css'
 import { collection, getDocs, orderBy, query } from 'firebase/firestore'
-import { db } from './Firebase'
-import { findSubject } from './PostSubmit'
+import { db } from '../Firebase'
+import { findSubject } from '../post/PostSubmit'
 import { useNavigate } from 'react-router-dom'
 
 const AllPosts = () => {
