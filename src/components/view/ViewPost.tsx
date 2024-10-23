@@ -10,10 +10,12 @@ import Footer from '../public/Footer';
 import CreateAnswerPost from './CreateAnswerPost';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from '../Firebase';
+import { useAuth } from '../ContextProvider';
 
 
 const ViewPost = () => {
   const navigate = useNavigate()
+  const currentUser = useAuth()
 
   // ページのuidからポストデータ取得
   const { uid } = useParams<{ uid: string}>();
@@ -61,7 +63,13 @@ const ViewPost = () => {
   // 回答するボタンで回答作成画面表示
   const [openCreateAnswer, setOpenCreateAnswer] = useState<boolean>(false)
   const handleAnswerButton = () => {
-    setOpenCreateAnswer(true)
+    // 認証状態によってログイン画面へ
+    if(currentUser){
+      setOpenCreateAnswer(true)
+    } else {
+      navigate('/login')
+    }
+    
   }
 
   // 回答のデータを取得
@@ -149,7 +157,7 @@ const ViewPost = () => {
           <ul>
             {
               postCategory.map((id:string) => (
-                <li>
+                <li key={id}>
                   {findSubject(id)}
                 </li>
               )) 
