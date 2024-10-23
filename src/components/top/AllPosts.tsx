@@ -25,7 +25,7 @@ const AllPosts = () => {
                     <div className='post-category'>
                         <ul>
                             {doc.data().categories.map((id:string) => (
-                                <li>
+                                <li key={id}>
                                     {findSubject(id)}
                                 </li>
                             ))}
