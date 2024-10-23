@@ -10,6 +10,7 @@ import PageTitle from '../public/PageTitle'
 import MyQuestion from './MyQuestion'
 import MyAnswer from './MyAnswer'
 import Footer from '../public/Footer'
+import PostButton from '../public/PostButton'
 
 const MyPage = () => {
   // ユーザーデータの基本情報の表示
@@ -75,6 +76,7 @@ const MyPage = () => {
           </div>
         </div>
       </div>
+      <PostButton />
       <Footer />
     </div>
   )
