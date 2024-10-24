@@ -84,6 +84,7 @@ const EditMyQuestion:React.FC<ChildProps> = ({collectionName, close, data, id}) 
                 <button onClick={handleUpdate}>変更する</button>
             </div>
         </div>
+        <div className='mask' onClick={close}></div>
     </div>
   )
 }
