@@ -16,7 +16,7 @@ const MyQuestion:React.FC<ChildProps> = ({uid}) => {
   const handleViewPage = (id:string) => {
     const viewId = `/view/${id}`
     navigate(viewId)
-}
+  }
 
   // uidから自分の質問投稿を取得
 const [myQuestion, setMyQuestion] = useState<React.ReactNode>()

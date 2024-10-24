@@ -1,4 +1,4 @@
-import { collection, getDocs, orderBy, query, where } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs, orderBy, query, where } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../Firebase'
 import { useNavigate } from 'react-router-dom'
@@ -9,46 +9,82 @@ type ChildProps ={
 
 const MyAnswer:React.FC<ChildProps> = ({uid}) => {
     const navigate = useNavigate()
-    // uidから自分の質問投稿を取得
-const [myQuestionData, setMyQuestionData] = useState<React.ReactNode>()
+
+    // uidから自分の回答投稿を取得
+    const [myAnswer, setMyAnswer] = useState<React.ReactNode>()
 
     const getMyQuestion = async () => {
         if(uid){
-            try{
-                const q = query(
-                    collection(db, 'posts'),
-                    where('userId', '==', uid),
-                    orderBy('createdAt', 'desc')
-                )
-                const querySnapshot = await getDocs(q);
+        const q = query(
+            collection(db, 'answers'),
+            where('userId', '==', uid),
+            orderBy('createdAt', 'desc')
+        )
+        const querySnapshot = await getDocs(q);
 
-                const myQuestionData = querySnapshot.docs.map((data)=>{
-                    const timestamp = data.data().createdAt
-                    const date = timestamp.toDate()
+        const questions = querySnapshot.docs.map((data)=>{
+            const timestamp = data.data().createdAt
+            const date = timestamp.toDate()
 
-                    return (
-                        <div key={data.id}>
+            return (
+            <div key={data.id}>
+                <div className='question-date'>
+                    {date.toLocaleString('ja-JP', {
+                                    year: 'numeric',
+                                    month: '2-digit',
+                                    day: '2-digit'
+                                    
+                                    })
+                    }
+                </div>
+                <div className='question-content' onClick={()=>handleViewPage(data.data().postId)} >
+                    {data.data().content}
+                </div>
+                <div className='edit'>
+                <i className="fa-solid fa-pen"></i>
+                <i className="fa-solid fa-trash" onClick={()=>handleDelete(data.id)}></i>
 
-                        </div>
-                    )
-                })
-            } catch(error:unknown) {
-                if(error instanceof Error){
-                    navigate('/error', {state: {message: error.message}})
-                } else {
-                    navigate('/error', {state: {message: "予期せぬエラーが発生しました"}})
-                }
-            }
-        }
+                </div>
+                <hr/>
+            </div>
+            )
+        })
+
+        setMyAnswer(questions)
+        } 
     }
 
     useEffect(() => {
         getMyQuestion()
     },[])
+
+    // 削除ボタンクリックで回答を削除
+    const handleDelete = async (answerId:string) => {
+    const confirmed = window.confirm("この投稿を削除しますか？この操作は取り消せません。")
+      if(!confirmed){
+        return
+      }
+    
+      try{
+        // 投稿の削除
+      const postDocRef = doc(db, 'answers', answerId)
+      await deleteDoc(postDocRef)
+
+      alert("投稿が削除されました。");
+      } catch(error){
+        alert("削除中にエラーが発生しました。再度お試しください。");
+      }
+   }
+
+   // 回答文クリックで投稿閲覧ページへ
+  const handleViewPage = (id:string) => {
+    const viewId = `/view/${id}`
+    navigate(viewId)
+  }
     
   return (
     <div className='questions'>
-      {myQuestionData}
+      {myAnswer}
     </div>
   )
 }
