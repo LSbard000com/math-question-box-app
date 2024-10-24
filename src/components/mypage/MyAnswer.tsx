@@ -1,7 +1,8 @@
-import { collection, deleteDoc, doc, getDocs, orderBy, query, where } from 'firebase/firestore'
+import { collection, deleteDoc, doc, DocumentData, getDocs, orderBy, query, where } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../Firebase'
 import { useNavigate } from 'react-router-dom'
+import EditMyQuestion from './EditMyPost'
 
 type ChildProps ={
     uid: string | undefined
@@ -41,7 +42,7 @@ const MyAnswer:React.FC<ChildProps> = ({uid}) => {
                     {data.data().content}
                 </div>
                 <div className='edit'>
-                <i className="fa-solid fa-pen"></i>
+                <i className="fa-solid fa-pen" onClick={()=>handleEdit(data.data(), data.id)}></i>
                 <i className="fa-solid fa-trash" onClick={()=>handleDelete(data.id)}></i>
 
                 </div>
@@ -81,10 +82,23 @@ const MyAnswer:React.FC<ChildProps> = ({uid}) => {
     const viewId = `/view/${id}`
     navigate(viewId)
   }
+
+    // 編集ボタンで編集画面へ
+  const [edit, setEdit] = useState<boolean>(false)
+  const [editId, setEditId] = useState<string>('')
+  const [editData, setEditData] = useState<DocumentData | null>(null)
+  const handleEdit = (data:DocumentData, id:string) => {
+    setEdit(true)
+    setEditId(id)
+    setEditData(data)
+  }
     
   return (
     <div className='questions'>
       {myAnswer}
+      <div className={edit ? '' : 'not-edit'}>
+        <EditMyQuestion collectionName={'answers'} close={()=>setEdit(false)} data={editData} id={editId} />
+      </div>
     </div>
   )
 }

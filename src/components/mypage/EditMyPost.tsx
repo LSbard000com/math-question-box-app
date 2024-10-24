@@ -6,12 +6,13 @@ import { db } from '../Firebase'
 import { useNavigate } from 'react-router-dom'
 
 type ChildProps = {
+    collectionName: string
     close: () => void
     data: DocumentData | null
     id: string
 }
 
-const EditMyQuestion:React.FC<ChildProps> = ({close, data, id}) => {
+const EditMyQuestion:React.FC<ChildProps> = ({collectionName, close, data, id}) => {
     const navigate = useNavigate()
     const currentUser = useAuth()
 
@@ -44,7 +45,7 @@ const EditMyQuestion:React.FC<ChildProps> = ({close, data, id}) => {
 
         if(currentUser){
             try{
-                const postsRef = doc(db, 'posts', id)
+                const postsRef = doc(db, collectionName, id)
                 await setDoc(postsRef, {
                     content: editContent,
                     createdAt: serverTimestamp()

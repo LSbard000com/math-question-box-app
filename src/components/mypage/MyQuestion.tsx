@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../Firebase'
 import { useNavigate } from 'react-router-dom'
 import '../css/MyQuestion.css'
-import EditMyQuestion from './EditMyQuestion'
+import EditMyQuestion from './EditMyPost'
 
 type ChildProps ={
   uid: string | undefined
@@ -105,7 +105,7 @@ const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
     <div className='questions'>
       {myQuestion}
       <div className={edit ? '' : 'not-edit'}>
-        <EditMyQuestion close={()=>setEdit(false)} data={editData} id={editId} />
+        <EditMyQuestion collectionName={'posts'} close={()=>setEdit(false)} data={editData} id={editId} />
       </div>
     </div>
   )
