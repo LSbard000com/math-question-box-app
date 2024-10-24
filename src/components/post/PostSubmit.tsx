@@ -37,7 +37,6 @@ const PostSubmit: React.FC<ChildProps> = ({maskClick, text, subjects}) => {
 
     // 投稿ボタンでfirestoreにデータを保存
     const currentUser = useAuth()
-    console.log(currentUser?.uid)
 
     const handleSubmit = async () => {
         if(currentUser){
