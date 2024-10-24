@@ -39,3 +39,7 @@
  .questions .edit i:hover {
     color: #333;
  }
+
+.questions .not-edit {
+   display: none;
+}

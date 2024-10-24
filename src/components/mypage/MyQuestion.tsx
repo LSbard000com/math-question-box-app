@@ -1,8 +1,9 @@
-import { collection, deleteDoc, doc, getDocs, orderBy, query, where } from 'firebase/firestore'
+import { collection, deleteDoc, doc, DocumentData, getDocs, orderBy, query, where } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../Firebase'
 import { useNavigate } from 'react-router-dom'
 import '../css/MyQuestion.css'
+import EditMyQuestion from './EditMyQuestion'
 
 type ChildProps ={
   uid: string | undefined
@@ -32,6 +33,7 @@ const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
         const questions = querySnapshot.docs.map((data)=>{
           const timestamp = data.data().createdAt
           const date = timestamp.toDate()
+          console.log(data.data())
 
           return (
             <div key={data.id}>
@@ -48,7 +50,7 @@ const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
                 {data.data().content}
               </div>
               <div className='edit'>
-                <i className="fa-solid fa-pen" ></i>
+                <i className="fa-solid fa-pen" onClick={()=>handleEdit(data.data(), data.id)} ></i>
                 <i className="fa-solid fa-trash" onClick={()=>handleDelete(data.id)}></i>
 
               </div>
@@ -65,12 +67,22 @@ const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
       getMyQuestion()
   },[])
 
+  // 編集ボタンで編集画面へ
+  const [edit, setEdit] = useState<boolean>(false)
+  const [editId, setEditId] = useState<string>('')
+  const [editData, setEditData] = useState<DocumentData | null>(null)
+  const handleEdit = (data:DocumentData, id:string) => {
+    setEdit(true)
+    setEditId(id)
+    setEditData(data)
+  }
+
   // 削除ボタンクリックで投稿と回答を削除
    const handleDelete = async (postId:string) => {
     const confirmed = window.confirm("この投稿を削除しますか？この操作は取り消せません。また、この投稿の回答も削除されます。")
-    if(!confirmed){
-      return
-    }
+      if(!confirmed){
+        return
+      }
     
       try{
         // 投稿の削除
@@ -92,6 +104,9 @@ const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
   return (
     <div className='questions'>
       {myQuestion}
+      <div className={edit ? '' : 'not-edit'}>
+        <EditMyQuestion close={()=>setEdit(false)} data={editData} id={editId} />
+      </div>
     </div>
   )
 

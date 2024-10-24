@@ -1,0 +1,84 @@
+.post-edit {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.post-edit .edit-area {
+    width: 800px;
+    padding: 20px 0;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: #fff;
+    z-index: 3;
+    position: absolute;
+    top:  100px;
+}
+
+.post-edit .edit-area h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.post-edit .edit-area .edit-content h3 {
+    margin: 10px 20px;
+}
+
+.post-edit .edit-area .non-edit-content h3 {
+    margin: 10px 20px;
+}
+
+.post-edit .edit-area .non-edit-content .content {
+    width: 95%;
+    margin: 20px auto;
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+
+.post-edit .edit-area .edit-content .content {
+    width: 95%;
+    height: 200px;
+    min-height: 200px;
+    margin-inline: auto;
+    border: 1px solid #666;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.post-edit .edit-area .edit-content .content textarea {
+    resize: none;
+    display: block;
+    width: 97%;
+    height: 95%;
+    font-size: 16px;
+    margin-inline: auto;
+    border: none;
+    outline: none;
+}
+
+
+.post-edit .edit-area .btn {
+    width: 95%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: right;
+    gap: 30px;
+}
+
+.post-edit .edit-area .btn button {
+    width: 100px;
+    height: 40px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 12pt;
+    font-weight: bold;
+    transition-duration: .3s;
+}
