@@ -66,6 +66,9 @@ const Login = () => {
                 <button id='signup-btn' onClick={handleClick}>新規登録</button>
                 <button id='login-btn' onClick={login}>ログイン</button>
             </div>
+            <p>
+                <span onClick={()=>navigate('/')}>&lt;&lt;トップページに戻る</span>
+            </p>
         </div> 
     </div>
   )

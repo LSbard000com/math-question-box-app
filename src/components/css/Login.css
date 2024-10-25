@@ -107,3 +107,12 @@
 .login .login-area .submit #login-btn:hover {
     background-color: var(--logincolor);
 }
+
+p span{ 
+    font-size: 10pt;
+    cursor: pointer;
+}
+
+p span:hover {
+    font-weight: bold;
+}
