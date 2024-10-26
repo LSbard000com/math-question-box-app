@@ -1,0 +1,9 @@
+.top-page {
+    width: 100%;
+}
+.top-page .main {
+    width: 1500px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+}
