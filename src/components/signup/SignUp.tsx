@@ -6,11 +6,13 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+
     // ログイン画面に戻る
     const navigate = useNavigate();
     const handleClick = () => {
         navigate('/login')
     }
+
 
     // 入力値をセット
     const [newEmail, setNewEmail] = useState<string>('')
@@ -30,6 +32,8 @@ const SignUp = () => {
     const handlePassConfirmChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setNewPassConfirm(e.target.value)
     }
+
+
 
     // 登録ボタンでアカウント新規登録
     const register = async () => {
@@ -57,12 +61,16 @@ const SignUp = () => {
         }
     }
 
+
+
     // パスワードが一致しなかったときに確認用にalertクラスを付与
     const [alert , setAlert] = useState<boolean>(false)
     
     useEffect(() => {
         setAlert(newPass === newPassConfirm ? false : true)
     },[newPass, newPassConfirm])
+
+
 
     // 入力完了を検知するカウンター
     const [inputCounter, setInputCounter] = useState<number>(0)
@@ -77,11 +85,15 @@ const SignUp = () => {
         setInputCounter(counter)
     },[newEmail,newName,newPass,newPassConfirm]) 
 
+
+
     // 登録ボタンの入力可否を制御
     const [isDisabled, setIsDisabled] = useState(true);
     useEffect(() => {
         setIsDisabled(inputCounter !== 0 || alert ? true : false)
     },[inputCounter,alert])
+
+    
 
   return (
     <div className='signup'>

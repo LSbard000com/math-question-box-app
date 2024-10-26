@@ -7,7 +7,10 @@ import { doc, getDoc } from 'firebase/firestore'
 import { onAuthStateChanged, signOut, User } from 'firebase/auth'
 
 const Header = () => {
+
   const navigate = useNavigate()
+
+
   //ログイン状態を監視
   const [user, setUser] = useState<User|null>(null)
   useEffect(() => {
@@ -15,6 +18,8 @@ const Header = () => {
       setUser(user)
     })
   })
+
+
 
   // ユーザー情報を取得
   const [username , setUsername] = useState<string|null>(null)
@@ -42,6 +47,8 @@ const Header = () => {
     getUsername()
   },[user])
 
+
+
   // マイページへ
   const handleMyPage = () => {
     if(user){
@@ -50,6 +57,8 @@ const Header = () => {
       navigate('/login')
     }
   }
+
+
 
   // サインアウト
   const handleSignOut = () => {
@@ -64,6 +73,8 @@ const Header = () => {
       })
     }
   }
+
+  
 
   return (
     <div className='header'>

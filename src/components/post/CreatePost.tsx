@@ -9,8 +9,11 @@ import PostSubmit from './PostSubmit'
 const CreatePost = () => {
   const navigate = useNavigate()
 
+
   // 投稿文の最低文字数を定義
   const [minNum] = useState<number>(5)
+
+
 
   // 投稿文の内容を保存
   const [text, setText] = useState<string>('')
@@ -18,8 +21,12 @@ const CreatePost = () => {
     setText(e.target.value)
   } 
 
+
+
   // カテゴリの最低選択数を定義
   const [minCheck] = useState<number>(1)
+
+
 
   // チェックした項目の管理
   const [selectedSubject, setSelectedSubject] = useState<string[]>([])
@@ -31,6 +38,8 @@ const CreatePost = () => {
       setSelectedSubject([...selectedSubject, id]);
     }
   }
+
+
 
   // カテゴリの詳細チェックボックス欄作成
   const univList = Object.entries(category.univ).map(([cat,subjects]) => (
@@ -50,6 +59,7 @@ const CreatePost = () => {
     </div>
   ))
 
+
   const highList = Object.entries(category.high).map(([cat,subjects]) => (
     <div>
       <label>■ {cat}</label>
@@ -66,6 +76,7 @@ const CreatePost = () => {
         ))}
     </div>
   ))
+
   
   const juniorList = Object.entries(category.junior).map(([cat,subjects]) => (
     <div>
@@ -84,6 +95,7 @@ const CreatePost = () => {
     </div>
   ))
 
+
   const primList = Object.entries(category.prim).map(([cat,subjects]) => (
     <div>
       <label>■ {cat}</label>
@@ -100,6 +112,8 @@ const CreatePost = () => {
         ))}
     </div>
   ))
+
+
 
   // カテゴリのチェックによって詳細を表示
   const [openUnivDetail, setOpenUnivDetail] = useState<boolean>(false)
@@ -122,6 +136,8 @@ const CreatePost = () => {
     setOpenPrimDetail(event.target.checked);
   }
 
+
+
   // その他ボタン
   const handleOtherClick = () => {
     if (selectedSubject.includes('O00')) {
@@ -130,6 +146,8 @@ const CreatePost = () => {
       setSelectedSubject([...selectedSubject, 'O00']);
     }
   }
+
+
 
   // 投稿ボタンの入力可否を制御
   const [textChecker, setTextChecker] = useState<boolean>(false)
@@ -147,11 +165,15 @@ const CreatePost = () => {
     setIsDisabled(textChecker && selctedChecker ? false : true)
   },[textChecker, selctedChecker])
 
+
+
   // 投稿ボタンクリックで確認画面へ
   const [jumpConfirm, setJumpConfirm] = useState<boolean>(false)
   const handleClickcConfirm = () => {
     setJumpConfirm(true)
   }
+
+  
 
   return (
     <div>

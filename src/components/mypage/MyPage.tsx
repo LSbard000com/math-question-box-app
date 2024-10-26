@@ -36,8 +36,12 @@ const MyPage = () => {
     getUserData()
   },[uid])
 
+
+
   // 投稿と回答の表示の切り替え
   const [activeComponent, setActiveComponent] = useState<'myquestion' | 'myanswer'>('myquestion')
+
+  
   
   return (
     <div>

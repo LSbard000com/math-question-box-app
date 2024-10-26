@@ -7,6 +7,7 @@ import { auth } from '../Firebase'
 const Login = () => {
     const navigate = useNavigate();
 
+
     // メールアドレスとパスワードの入力値をセット
     const [email, setEmail] = useState<string>('')
     const [pass, setPass] = useState<string>('')
@@ -18,8 +19,12 @@ const Login = () => {
         setPass(e.target.value)
     }
 
+
+
     // 未入力項目がある場合にalertクラスを付与
     const [alert, setAlert] = useState<boolean>(false)
+
+
 
     // ログインボタンクリックで認証
     const login = async () => {
@@ -41,10 +46,14 @@ const Login = () => {
         } 
     }
 
+
+
     // 新規登録ボタンでサインインページへ遷移
     const handleClick = () => {
     navigate('/signup')
-}
+    }
+
+    
   return (
     <div className='login'>
         <div className='login-area'>

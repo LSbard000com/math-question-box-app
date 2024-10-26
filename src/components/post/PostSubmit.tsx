@@ -12,6 +12,8 @@ type ChildProps = {
     subjects: string[];
 }
 
+
+
 // 受け取ったカテゴリ配列のIDから単元の値を習得して配列に格納
 
 export const findSubject = (id:string): string | null => {
@@ -28,12 +30,16 @@ export const findSubject = (id:string): string | null => {
     return null
 }
 
+
+
 const PostSubmit: React.FC<ChildProps> = ({maskClick, text, subjects}) => {
     const navigate = useNavigate()
 
     useEffect(() => {
         subjects.map(findSubject)
     },[subjects])
+
+
 
     // 投稿ボタンでfirestoreにデータを保存
     const currentUser = useAuth()
@@ -60,6 +66,8 @@ const PostSubmit: React.FC<ChildProps> = ({maskClick, text, subjects}) => {
             navigate('/login')
         }
     }
+
+    
     
   return (
     <div className='post-submit'>

@@ -16,6 +16,7 @@ const EditMyQuestion:React.FC<ChildProps> = ({collectionName, close, data, id}) 
     const navigate = useNavigate()
     const currentUser = useAuth()
 
+
     // 受け取ったデータを格納
     const [receiveData, setReceiveData] = useState<DocumentData>()
 
@@ -29,12 +30,16 @@ const EditMyQuestion:React.FC<ChildProps> = ({collectionName, close, data, id}) 
         console.log(receiveData?.content)
     },[receiveData])
 
+
+
     // 変更後の質問文を保存
     const [editContent, setEditContent] = useState<string>('')
 
     const handleEditContent = (e: { target: { value: React.SetStateAction<string> } }) => {
         setEditContent(e.target.value)
     }
+
+
 
     //  変更ボタンクリックで投稿を上書きする
     const handleUpdate = async () => {
@@ -62,6 +67,8 @@ const EditMyQuestion:React.FC<ChildProps> = ({collectionName, close, data, id}) 
             }
         }
     }
+
+    
 
   return (
     <div className='post-edit'>

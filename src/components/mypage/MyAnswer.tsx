@@ -11,6 +11,7 @@ type ChildProps ={
 const MyAnswer:React.FC<ChildProps> = ({uid}) => {
     const navigate = useNavigate()
 
+
     // uidから自分の回答投稿を取得
     const [myAnswer, setMyAnswer] = useState<React.ReactNode>()
 
@@ -59,6 +60,8 @@ const MyAnswer:React.FC<ChildProps> = ({uid}) => {
         getMyQuestion()
     },[])
 
+
+
     // 削除ボタンクリックで回答を削除
     const handleDelete = async (answerId:string) => {
     const confirmed = window.confirm("この投稿を削除しますか？この操作は取り消せません。")
@@ -77,11 +80,15 @@ const MyAnswer:React.FC<ChildProps> = ({uid}) => {
       }
    }
 
+
+
    // 回答文クリックで投稿閲覧ページへ
   const handleViewPage = (id:string) => {
     const viewId = `/view/${id}`
     navigate(viewId)
   }
+
+
 
     // 編集ボタンで編集画面へ
   const [edit, setEdit] = useState<boolean>(false)
@@ -92,6 +99,8 @@ const MyAnswer:React.FC<ChildProps> = ({uid}) => {
     setEditId(id)
     setEditData(data)
   }
+
+  
     
   return (
     <div className='questions'>

@@ -18,6 +18,8 @@ const MyQuestion:React.FC<ChildProps> = ({uid}) => {
     navigate(viewId)
   }
 
+
+
   // uidから自分の質問投稿を取得
 const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
 
@@ -67,6 +69,8 @@ const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
       getMyQuestion()
   },[])
 
+
+
   // 編集ボタンで編集画面へ
   const [edit, setEdit] = useState<boolean>(false)
   const [editId, setEditId] = useState<string>('')
@@ -76,6 +80,8 @@ const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
     setEditId(id)
     setEditData(data)
   }
+
+
 
   // 削除ボタンクリックで投稿と回答を削除
    const handleDelete = async (postId:string) => {
@@ -100,6 +106,8 @@ const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
         alert("削除中にエラーが発生しました。再度お試しください。");
       }
    }
+
+   
 
   return (
     <div className='questions'>

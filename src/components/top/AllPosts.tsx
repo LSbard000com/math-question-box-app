@@ -55,6 +55,8 @@ const AllPosts = () => {
         allPosts()
     },[])
 
+
+
     // 投稿文をクリックで閲覧ページへ遷移
     const navigate = useNavigate()
 
@@ -62,6 +64,8 @@ const AllPosts = () => {
         const viewId = `/view/${id}`
         navigate(viewId)
     }
+
+    
 
   return (
     <div className='all-posts'>
