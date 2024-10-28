@@ -1,27 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/Filter.css'
 import { category, Item } from '../public/CategoryData'
+import { collection, DocumentData, getDocs, query, QuerySnapshot, where } from 'firebase/firestore'
+import { db } from '../Firebase'
+import { useNavigate } from 'react-router-dom'
 
-type CatArry = {[key: string] : Item[]}
 
 const Filter = () => {
+  // 検索ページに遷移するときにgetCheckDataで取得したデータを転送
+  const navigate = useNavigate()
+  const handleCarryData = () => {
+    if(!(selectedSubject.length === 0)){
+      navigate('/search', {state: {data: selectedSubject}})
+    }
+  }
+
+
+
   // カテゴリによってチェックボックスのリストを作る関数
   const createList = (catName:{ [key: string] : Item[] }) => {
     const checkboxList = Object.entries(catName).map(([cat,subjects]) => (
-      <div className='cat-list'>
+      <div key={cat} className='cat-list'>
         <div>{cat}</div>
         <ul>
           {subjects.map((sub)=>(
-            <li>
-              <input type='checkbox' />{sub.subject}
+            <li key={sub.id}>
+              <input 
+                type='checkbox'
+                checked={selectedSubject.includes(sub.id)}
+                onChange={() => handleCheckboxChange(sub.id)}
+              />
+              {sub.subject}
             </li>
           ))}
         </ul>
       </div>
     ))
-
     return checkboxList
   }
+
+
 
   // カテゴリークリックでサブジェクトを表示
   const [openUniv, setOpenUniv] = useState<boolean>(false)
@@ -35,6 +53,21 @@ const Filter = () => {
   const handleOpenJunior = () => setOpenJunior(!openJunior)
   const handleOpenPrim = () => setOpenPrim(!openPrim)
   const handleOpenOthers = () => setOpenOthers(!openOthers)
+
+
+
+  // チェックした単元のIDを格納する配列を生成
+  const [selectedSubject, setSelectedSubject] = useState<string[]>([])
+
+  const handleCheckboxChange = (id: string) => {
+    if (selectedSubject.includes(id)) {
+      setSelectedSubject(selectedSubject.filter(itemId => itemId !== id));
+    } else {
+      setSelectedSubject([...selectedSubject, id]);
+    }
+  }
+
+
 
   return (
     <div className='filter'>
@@ -94,7 +127,7 @@ const Filter = () => {
         </div>
       </div>
       <div className='search-btn'>
-        <button>絞り込み検索</button>
+        <button onClick={handleCarryData}>絞り込み検索</button>
       </div>
     </div>
   )

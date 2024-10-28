@@ -1,0 +1,54 @@
+.searched-number {
+    width: 800px;
+    height: 50px;
+    line-height: 50px;
+    margin: 20px auto;
+    font-weight: bold;
+}
+
+.searched {
+    width: 800px;
+    margin-inline: auto;
+}
+
+.searched .post {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.searched .post .post-category ul {
+    margin: 5px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.searched .post .post-category ul li {
+    font-size: 10pt;
+    margin-right: 20px;
+    padding: 0 10px;
+    border: 1px solid #666;
+    border-radius: 15px;
+    box-shadow: .5px .5px 1px #666;
+}
+
+.searched .post .post-content {
+    width: 95%; 
+    margin: 15px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    cursor: pointer;
+}
+
+.searched .post .post-content:hover{
+    text-decoration: underline;
+}
+
+.searched .post .post-time {
+    margin: 5px 0 5px 20px;
+    font-size: 12pt;
+    color: #999;
+}
