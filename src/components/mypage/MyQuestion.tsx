@@ -1,6 +1,6 @@
 import { collection, deleteDoc, doc, DocumentData, getDocs, orderBy, query, where } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
-import { db } from '../Firebase'
+import { db } from '../../Firebase'
 import { useNavigate } from 'react-router-dom'
 import '../css/MyQuestion.css'
 import EditMyQuestion from './EditMyPost'

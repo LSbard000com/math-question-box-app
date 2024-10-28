@@ -9,7 +9,7 @@ import '../css/ViewPost.css'
 import Footer from '../public/Footer';
 import CreateAnswerPost from './CreateAnswerPost';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import { db } from '../Firebase';
+import { db } from '../../Firebase';
 import { useAuth } from '../ContextProvider';
 
 

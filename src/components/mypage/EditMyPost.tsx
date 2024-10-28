@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../css/EditMyQuestion.css'
 import { doc, DocumentData, serverTimestamp, setDoc, Timestamp } from 'firebase/firestore'
 import { useAuth } from '../ContextProvider'
-import { db } from '../Firebase'
+import { db } from '../../Firebase'
 import { useNavigate } from 'react-router-dom'
 
 type ChildProps = {

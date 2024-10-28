@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../css/CreateAnswerPost.css'
 import { useAuth } from '../ContextProvider';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { db } from '../Firebase';
+import { db } from '../../Firebase';
 import { useNavigate } from 'react-router-dom';
 
 type ChildProps = {

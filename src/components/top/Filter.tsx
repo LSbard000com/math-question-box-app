@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../css/Filter.css'
 import { category, Item } from '../public/CategoryData'
 import { collection, DocumentData, getDocs, query, QuerySnapshot, where } from 'firebase/firestore'
-import { db } from '../Firebase'
+import { db } from '../../Firebase'
 import { useNavigate } from 'react-router-dom'
 
 

@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { db } from '../Firebase'
+import { db } from '../../Firebase'
 import Header from '../public/Header'
 import PageTitle from '../public/PageTitle'
 import { findSubject } from '../post/PostSubmit'
