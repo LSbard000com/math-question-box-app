@@ -9,6 +9,7 @@ import ContextProvider, { useAuth } from './components/ContextProvider';
 import { ProtectedRouteProps } from './interface/Interface';
 import ErrorPage from './components/ErrorPage';
 import ViewPost from './components/view/ViewPost';
+import Search from './components/search/Search';
 
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
     },
     { 
       path: '/mypage/:uid',
-      element: <ProtectedRoute element={<MyPage />} />
+      // element: <ProtectedRoute element={<MyPage />} />
+      element: <MyPage />
     },
     { 
       path: '/login', 
@@ -43,6 +45,10 @@ function App() {
     {
       path: '/view/:uid',
       element: <ViewPost />
+    },
+    {
+      path: '/search',
+      element: <Search />
     },
     {
       path: '/error',
