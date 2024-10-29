@@ -11,7 +11,7 @@ const Filter = () => {
   const navigate = useNavigate()
   const handleCarryData = () => {
     if(!(selectedSubject.length === 0)){
-      navigate('/search', {state: {data: selectedSubject}})
+      navigate('/search', {state: {data: selectedSubject, word: ''}})
     }
   }
 
