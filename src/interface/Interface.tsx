@@ -20,6 +20,7 @@ export interface PageTitleProps {
 }
 
 export interface PostData {
+    id: string;
     content: string;
     categories:string[];
     createdAt: Timestamp;

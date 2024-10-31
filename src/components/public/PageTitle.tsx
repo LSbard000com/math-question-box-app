@@ -13,13 +13,9 @@ const PageTitle: React.FC<PageTitleProps> = ({ title }) => {
   const navigate = useNavigate()
   const handleCarryWord = () => {
     if(!(searchWord.length === 0)){
-      navigate('/search', {state: {data: [], word: searchWord}})
+      navigate('/search', { state: {data: [], word: searchWord}})
     }
   }
- 
-  useEffect(() => {
-    console.log(searchWord.length)
-  },[searchWord])
    
 
   return (
