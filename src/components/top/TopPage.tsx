@@ -10,7 +10,6 @@ import Filter from './Filter'
 const TopPage = () => {
   return (
     <div className='top-page'>
-      <PostButton />
       <div className='header'>
         <Header />
         <PageTitle title='トップページ' />
