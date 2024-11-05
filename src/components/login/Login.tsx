@@ -35,16 +35,22 @@ const Login = () => {
                 navigate('/')
             } catch(error:unknown) {
                 if (error instanceof Error) {
-                    console.log('ログインに失敗しました:', error.message);
+                    setLoginErrorMsg('ログインに失敗しました');
                     navigate('/login');
                 } else {
-                    console.log('予期しないエラーが発生しました');
+                    navigate('/error', {state: {message: '予期せぬエラーが発生しました。'}});
                 }
             }
         } else {
             setAlert(true)
+            setLoginErrorMsg('')
         } 
     }
+
+
+
+    // ログイン失敗時にメッセージを表示
+    const [loginErrorMsg, setLoginErrorMsg] = useState<string>('')
 
 
 
@@ -59,6 +65,9 @@ const Login = () => {
         <div className='login-area'>
             <h1>みんなの数学質問箱</h1>
             <p>- ログイン -</p>
+            <div className='login-error'>
+                <p>{loginErrorMsg}</p>
+            </div>
             <form className={alert ? 'alert' : ''}>
                 <div className='form-group'>
                     <label>メールアドレス</label>
