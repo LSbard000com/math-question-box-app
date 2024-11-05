@@ -27,8 +27,7 @@ function App() {
     },
     { 
       path: '/mypage/:uid',
-      // element: <ProtectedRoute element={<MyPage />} />
-      element: <MyPage />
+      element: <ProtectedRoute element={<MyPage />} />
     },
     { 
       path: '/login', 
