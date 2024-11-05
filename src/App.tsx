@@ -57,7 +57,10 @@ function App() {
 
   return (
   <ContextProvider>
-    <RouterProvider router={routes} />
+    <div className='background'></div>
+    <div className='route'>
+      <RouterProvider router={routes} />
+    </div>
   </ContextProvider>
   )
 }
