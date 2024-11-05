@@ -49,8 +49,14 @@
     color: black;
 }
 
+.header .header-area .header-nav .log-on {
+    display: flex;
+    gap: 20px;
+}
+
 .header .header-area .header-nav .sign {
     height: 40px;
+    width: 100px;
     margin-bottom: 5px;
     border: 1px solid #999;
     border-radius: 10px;
