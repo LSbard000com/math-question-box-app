@@ -9,9 +9,8 @@ const PostButton = () => {
         navigate('/post')
     }
   return (
-    <div className='navbutton' onClick={jumpCreatePost}>
-        <span></span>
-        <span></span>
+    <div className='sign' onClick={jumpCreatePost}>
+        <div>質問する</div>
     </div>
   )
 }

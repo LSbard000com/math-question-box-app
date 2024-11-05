@@ -5,6 +5,7 @@ import imageName from '../img/kkrn_icon_user_6.png'
 import { auth, db } from '../../Firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import { onAuthStateChanged, signOut, User } from 'firebase/auth'
+import PostButton from './PostButton'
 
 const Header = () => {
 
@@ -86,7 +87,11 @@ const Header = () => {
             {user ? <li onClick={handleMyPage}>マイページ</li> : null}
           </ul>
           {user ? 
-          <button className='sign' onClick={handleSignOut}>サインアウト</button>
+          <div className='log-on'>
+            <button className='sign' onClick={handleSignOut}>サインアウト</button>
+            <PostButton />
+          </div>
+          
           :
           <button className='sign' onClick={() => navigate('/login')}>サインイン</button>
           }

@@ -80,7 +80,6 @@ const MyPage = () => {
           </div>
         </div>
       </div>
-      <PostButton />
       <Footer />
     </div>
   )
