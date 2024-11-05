@@ -53,10 +53,9 @@ const SignUp = () => {
             navigate('/');
         } catch (error: unknown) {
             if (error instanceof Error) {
-                navigate('/login');
-                console.log('登録に失敗しました:', error.message);
+                navigate('/error', {state: {message: error.message}});
             } else {
-                console.log('予期しないエラーが発生しました');
+                navigate('/error', {state: {message: '予期せぬエラーが発生しました。'}});
             }
         }
     }
