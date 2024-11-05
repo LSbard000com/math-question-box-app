@@ -23,11 +23,25 @@ function App() {
   const routes = createBrowserRouter([
     {
       path: '/', 
-      element: <TopPage />
-    },
-    { 
-      path: '/mypage/:uid',
-      element: <ProtectedRoute element={<MyPage />} />
+      element: <TopPage />,
+      children:[
+        {
+          path: 'search',
+          element: <Search />
+        },
+        {
+          path: 'post',
+          element: <ProtectedRoute element={<CreatePost />} />
+        },
+        { 
+          path: 'mypage/:uid',
+          element: <ProtectedRoute element={<MyPage />} />
+        },
+        {
+          path: 'view/:uid',
+          element: <ViewPost />
+        }
+      ]
     },
     { 
       path: '/login', 
@@ -36,18 +50,6 @@ function App() {
     { 
       path: '/signup', 
       element: <SignUp />,
-    },
-    {
-      path: '/post',
-      element: <ProtectedRoute element={<CreatePost />} />
-    },
-    {
-      path: '/view/:uid',
-      element: <ViewPost />
-    },
-    {
-      path: '/search',
-      element: <Search />
     },
     {
       path: '/error',

@@ -177,7 +177,6 @@ const CreatePost = () => {
 
   return (
     <div>
-      <Header />
       <PageTitle title='質問投稿' />
       <div className={jumpConfirm ? '' : 'confirm'}>
         <PostSubmit maskClick={()=>setJumpConfirm(false)} text={text} subjects={selectedSubject} />
