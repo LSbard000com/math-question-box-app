@@ -5,7 +5,7 @@
 
 .post-area {
     width: 600px;
-    max-height: 1000px;
+    max-height: 80vh;
     padding: 5px;
     margin-inline: auto;
     overflow-y: scroll;

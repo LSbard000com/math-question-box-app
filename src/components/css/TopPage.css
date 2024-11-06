@@ -21,7 +21,8 @@
 .background {
     width: 100vw;
     height: 100vh;
-    background-color: aqua;
+    background-color: #eee;
+    opacity: 0.5;
     position: fixed;
     top: 0;
     left: 0;
