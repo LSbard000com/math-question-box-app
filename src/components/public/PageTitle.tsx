@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { PageTitleProps } from '../../interface/Interface'
 import '../css/PageTitle.css'
 import { useNavigate } from 'react-router-dom'

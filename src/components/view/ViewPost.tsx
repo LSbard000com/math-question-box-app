@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../public/Header'
+import { useEffect, useState } from 'react'
 import PageTitle from '../public/PageTitle'
 import { useNavigate, useParams } from 'react-router-dom';
 import { doc, getDoc, where } from 'firebase/firestore';
 import { findSubject } from '../post/PostSubmit'
 import imageName from '../img/kkrn_icon_user_6.png'
 import '../css/ViewPost.css'
-import Footer from '../public/Footer';
 import CreateAnswerPost from './CreateAnswerPost';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from '../../Firebase';

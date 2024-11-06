@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import '../css/Header.css'
 import { useNavigate } from 'react-router-dom'
 import imageName from '../img/kkrn_icon_user_6.png'

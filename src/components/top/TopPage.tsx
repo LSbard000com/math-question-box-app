@@ -1,4 +1,3 @@
-import React from 'react'
 import '../css/TopPage.css'
 import Header from '../public/Header'
 import Footer from '../public/Footer'

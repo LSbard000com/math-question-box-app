@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../public/Header'
 import '../css/CreatePost.css'
 import PageTitle from '../public/PageTitle'
 import { category } from '../public/CategoryData'
