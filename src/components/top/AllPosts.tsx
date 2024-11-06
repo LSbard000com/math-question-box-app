@@ -5,6 +5,7 @@ import { db } from '../../Firebase'
 import { findSubject } from '../post/PostSubmit'
 import { useNavigate } from 'react-router-dom'
 import Filter from './Filter'
+import PageTitle from '../public/PageTitle'
 
 const AllPosts = () => {
     // すべての投稿を投稿日時順に表示
@@ -69,12 +70,16 @@ const AllPosts = () => {
     
 
   return (
+    <>
+    <PageTitle title="トップページ" />
     <div className='all-posts'>
         <Filter />
         <div className='post-area'>
             {posts}
         </div>
     </div>
+    </>
+    
   )
 }
 
