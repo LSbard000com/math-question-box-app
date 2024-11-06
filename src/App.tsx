@@ -10,6 +10,7 @@ import { ProtectedRouteProps } from './interface/Interface';
 import ErrorPage from './components/ErrorPage';
 import ViewPost from './components/view/ViewPost';
 import Search from './components/search/Search';
+import AllPosts from './components/top/AllPosts';
 
 
 function App() {
@@ -23,11 +24,29 @@ function App() {
   const routes = createBrowserRouter([
     {
       path: '/', 
-      element: <TopPage />
-    },
-    { 
-      path: '/mypage/:uid',
-      element: <ProtectedRoute element={<MyPage />} />
+      element: <TopPage />,
+      children:[
+        {
+          index: true,
+          element: <AllPosts />
+        },
+        {
+          path: 'search',
+          element: <Search />
+        },
+        {
+          path: 'post',
+          element: <ProtectedRoute element={<CreatePost />} />
+        },
+        { 
+          path: 'mypage/:uid',
+          element: <ProtectedRoute element={<MyPage />} />
+        },
+        {
+          path: 'view/:uid',
+          element: <ViewPost />
+        }
+      ]
     },
     { 
       path: '/login', 
@@ -38,26 +57,13 @@ function App() {
       element: <SignUp />,
     },
     {
-      path: '/post',
-      element: <ProtectedRoute element={<CreatePost />} />
-    },
-    {
-      path: '/view/:uid',
-      element: <ViewPost />
-    },
-    {
-      path: '/search',
-      element: <Search />
-    },
-    {
       path: '/error',
-      element: <ErrorPage />
+      element: <ErrorPage />　
     }
   ])
 
   return (
   <ContextProvider>
-    <div className='background'></div>
     <div className='route'>
       <RouterProvider router={routes} />
     </div>

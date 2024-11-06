@@ -45,7 +45,6 @@ const MyPage = () => {
   
   return (
     <div>
-      <Header />
       <PageTitle title='マイページ' />
       <div className='mypage'>
         <div className='mydata'>
@@ -80,7 +79,6 @@ const MyPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

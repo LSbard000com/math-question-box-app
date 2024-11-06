@@ -173,7 +173,6 @@ const Search = () => {
 
   return (
     <div>
-      <Header />
       <PageTitle title='検索結果' />
       <div className='searched-number'>
         <div>
@@ -189,7 +188,6 @@ const Search = () => {
           searchedPosts
         }
       </div>
-      <Footer />
     </div>
   )
 }

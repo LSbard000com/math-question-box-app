@@ -137,7 +137,6 @@ const ViewPost = () => {
 
   return (
     <div>
-      <Header />
       <PageTitle title='閲覧ページ'/>
       <div className='post-view-area'>
         <div className='post-header'>
@@ -204,7 +203,6 @@ const ViewPost = () => {
       <div className={openCreateAnswer ? '' : 'create'}>
         <CreateAnswerPost postId={uid} close={()=>setOpenCreateAnswer(false)} content={postContent} />
       </div>
-      <Footer />
     </div>
   )
 }

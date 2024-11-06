@@ -9,6 +9,7 @@
 .header .header-area {
     width: 1200px;
     margin: 0 auto;
+    padding: 30px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -17,7 +18,7 @@
 
 .header .header-area .title {
     margin: 20px 0;
-    font-size: 28pt;
+    font-size: 32pt;
     font-family: "Zen Kurenaido", sans-serif;
 }
 
@@ -41,7 +42,6 @@
 }
 
 .header .header-area .header-nav ul li {
-    margin: 0 20px;
     width: 80px;
 }
 
