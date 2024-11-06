@@ -10,6 +10,7 @@ import { ProtectedRouteProps } from './interface/Interface';
 import ErrorPage from './components/ErrorPage';
 import ViewPost from './components/view/ViewPost';
 import Search from './components/search/Search';
+import AllPosts from './components/top/AllPosts';
 
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
       path: '/', 
       element: <TopPage />,
       children:[
+        {
+          index: true,
+          element: <AllPosts />
+        },
         {
           path: 'search',
           element: <Search />
@@ -53,13 +58,12 @@ function App() {
     },
     {
       path: '/error',
-      element: <ErrorPage />
+      element: <ErrorPage />　
     }
   ])
 
   return (
   <ContextProvider>
-    <div className='background'></div>
     <div className='route'>
       <RouterProvider router={routes} />
     </div>
