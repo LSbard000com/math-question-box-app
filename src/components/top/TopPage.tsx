@@ -1,11 +1,9 @@
 import React from 'react'
 import '../css/TopPage.css'
 import Header from '../public/Header'
-import PageTitle from '../public/PageTitle'
-import AllPosts from './AllPosts'
 import Footer from '../public/Footer'
-import Filter from './Filter'
 import { Outlet } from 'react-router-dom'
+import backgroundImage from '../img/数学背景.jpg'
 
 const TopPage = () => {
   return (
@@ -19,7 +17,118 @@ const TopPage = () => {
       <div className='top-footer'>
         <Footer />
       </div>
-      <div className='background'></div>
+      <div className='background'>
+        <div className='odd'>
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='even'>
+        <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='odd'>
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='even'>
+        <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='odd'>
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='even'>
+        <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='odd'>
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='even'>
+        <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='odd'>
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+        <div className='even'>
+        <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+          <img src={backgroundImage} alt='背景画像' />
+        </div>
+      </div>
     </div>
   )
 }
