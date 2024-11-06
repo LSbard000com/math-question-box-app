@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@sinonjs/text-encoding": "^0.7.3"
+    "@sinonjs/text-encoding": "^0.7.3",
+    "web-streams-polyfill": "^4.0.0"
   }
 }

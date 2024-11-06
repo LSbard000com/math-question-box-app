@@ -4,6 +4,9 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 import { TextEncoder, TextDecoder } from '@sinonjs/text-encoding';
+import { ReadableStream } from 'web-streams-polyfill'; 
 
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
+global.ReadableStream = ReadableStream;
+
