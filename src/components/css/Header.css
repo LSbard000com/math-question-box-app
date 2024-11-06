@@ -18,7 +18,7 @@
 
 .header .header-area .title {
     margin: 20px 0;
-    font-size: 28pt;
+    font-size: 32pt;
     font-family: "Zen Kurenaido", sans-serif;
 }
 
@@ -42,7 +42,6 @@
 }
 
 .header .header-area .header-nav ul li {
-    margin: 0 20px;
     width: 80px;
 }
 
