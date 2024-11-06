@@ -27,7 +27,7 @@ const AllPosts = () => {
                     <div className='post-category'>
                         <ul>
                             {doc.data().categories.map((id:string) => (
-                                <li key={id}>
+                                <li key={id} onClick={()=>handleViewPageOfCategoryClick(id)}>
                                     {findSubject(id)}
                                 </li>
                             ))}
@@ -41,10 +41,9 @@ const AllPosts = () => {
                         {date.toLocaleString('ja-JP', {
                             year: 'numeric',
                             month: '2-digit',
-                            day: '2-digit'
-                            
+                            day: '2-digit'   
                             })
-                            }
+                        }
                     </div>
                     <hr style={{ marginBottom: '20px'}}/>
                 </div>
@@ -65,6 +64,13 @@ const AllPosts = () => {
     const handleViewPage = (id:string) => {
         const viewId = `/view/${id}`
         navigate(viewId)
+    }
+
+
+
+    // カテゴリーをクリックでそのカテゴリを条件に検索ページへ
+    const handleViewPageOfCategoryClick = (id:string) => {
+        navigate('/search', {state: {data: [id], word: ''}})
     }
 
     

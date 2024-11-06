@@ -33,6 +33,7 @@
     border: 1px solid #666;
     border-radius: 15px;
     box-shadow: .5px .5px 1px #666;
+    cursor: pointer;
 }
 
 .post-area .post .post-content {
