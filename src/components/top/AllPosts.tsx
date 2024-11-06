@@ -4,6 +4,7 @@ import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from '../../Firebase'
 import { findSubject } from '../post/PostSubmit'
 import { useNavigate } from 'react-router-dom'
+import Filter from './Filter'
 
 const AllPosts = () => {
     // すべての投稿を投稿日時順に表示
@@ -69,8 +70,9 @@ const AllPosts = () => {
 
   return (
     <div className='all-posts'>
+        <Filter />
         <div className='post-area'>
-        {posts}
+            {posts}
         </div>
     </div>
   )

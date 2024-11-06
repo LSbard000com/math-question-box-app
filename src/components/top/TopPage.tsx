@@ -9,14 +9,17 @@ import { Outlet } from 'react-router-dom'
 
 const TopPage = () => {
   return (
-    <div className='top-page'>
-      <div className='header'>
+    <div>
+      <div className='top-header'>
         <Header />
       </div>
-      <Outlet />
-      <div className='footer'>
+      <div className='main'>
+        <Outlet />
+      </div>
+      <div className='top-footer'>
         <Footer />
       </div>
+      <div className='background'></div>
     </div>
   )
 }

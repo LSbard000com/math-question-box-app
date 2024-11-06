@@ -1,5 +1,6 @@
 .all-posts{
-    width: 800px;
+    display: flex;
+    justify-content: center;
 }
 
 .post-area {
