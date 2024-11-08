@@ -1,5 +1,5 @@
 .search {
-    height: 30px;
+    height: 90%;
     display: flex;
     align-items: center;
     border: 1px solid #aaa;
@@ -8,14 +8,14 @@
 }
 
 .search .search-area {
-    width: 200px;
-    height: 30px;
+    width: 85%;
+    height: 100%;
     display: flex;
     align-items: center;
 }
 
 .search .search-area input {
-    height: 25px;
+    height: 100%;
     width: 97%;
     padding: 0;
     margin: 0 auto;
@@ -24,8 +24,8 @@
 }
 
 .search .search-btn {
-    height: 30px;
-    width: 30px;
+    height: 100%;
+    width: 15%;
 }
 
 .search button {
