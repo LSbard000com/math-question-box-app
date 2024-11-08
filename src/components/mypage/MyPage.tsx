@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../public//Header'
+import { useEffect, useState } from 'react'
 import '../css/MyPage.css'
 import imageName from '../img/kkrn_icon_user_6.png'
 import { useParams } from 'react-router-dom'
@@ -9,8 +8,7 @@ import { db } from '../../Firebase'
 import PageTitle from '../public/PageTitle'
 import MyQuestion from './MyQuestion'
 import MyAnswer from './MyAnswer'
-import Footer from '../public/Footer'
-import PostButton from '../public/PostButton'
+
 
 const MyPage = () => {
   // ユーザーデータの基本情報の表示
