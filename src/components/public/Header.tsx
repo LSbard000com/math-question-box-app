@@ -109,8 +109,8 @@ const Header = () => {
               </div>
             }
             </li>
-            <li>
-              <PostButton />
+            <li onClick={()=>navigate('/post')}>
+              質問する
             </li>
           </ul>
           <div className='search-bar'>
