@@ -4,12 +4,15 @@
 
 .header {
     width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #fff, #eee);
 }
 
 .header .header-area {
-    width: 1200px;
+    width: 1400px;
     margin: 0 auto;
-    padding: 30px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -17,8 +20,10 @@
 }
 
 .header .header-area .title {
-    margin: 20px 0;
-    font-size: 32pt;
+    width: 500px;
+    height: 100%;
+    margin: 0;
+    font-size: 40pt;
     font-family: "Zen Kurenaido", sans-serif;
 }
 
