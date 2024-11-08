@@ -1,9 +1,3 @@
 :root{
     --logincolor: #97cdf3;
 }
-
-.sign{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
