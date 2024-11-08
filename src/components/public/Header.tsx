@@ -83,34 +83,34 @@ const Header = () => {
       <div className='header-area'>
         <div className='area-1'>
           <h1 className='title'><a href='/'>みんなの数学質問箱</a></h1>
+          <div className='acount'>
+              <div className='img-area'>
+                < img className='plofile-img' src={imageName} alt='アカウント' />
+              </div>
+              <div className='user-info'>{username} さん</div>
+          </div>
         </div>
         <nav className='header-nav'>
           <ul>
-            <li>
-              <a href='/'>トップ</a>
+            <li onClick={()=>navigate('/')}>
+              トップ
             </li>
             <li onClick={handleMyPage}>
               マイページ
             </li>
             <li>
             {user ? 
-              <div className='log-on'>
-                <button className='sign' onClick={handleSignOut}>サインアウト</button>
+              <div onClick={handleSignOut}>
+                サインアウト
               </div>
               :
-              <button className='sign' onClick={() => navigate('/login')}>サインイン</button>
+              <div onClick={() => navigate('/login')}>
+                サインイン
+              </div>
             }
             </li>
             <li>
               <PostButton />
-            </li>
-            <li>
-              <div className='acount'>
-                <div className='img-area'>
-                < img className='plofile-img' src={imageName} alt='アカウント' />
-                </div>
-                <div className='user-info'>{username} さん</div>
-              </div>
             </li>
           </ul>
           <div className='search-bar'>
