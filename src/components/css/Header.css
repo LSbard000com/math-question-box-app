@@ -4,97 +4,108 @@
 
 .header {
     width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #fff, #eee);
 }
 
 .header .header-area {
-    width: 1200px;
+    width: 1400px;
     margin: 0 auto;
-    padding: 30px 0;
-    display: flex;
-    justify-content: space-between;
     align-items: flex-end;
     overflow: hidden;
 }
 
-.header .header-area .title {
-    margin: 20px 0;
-    font-size: 32pt;
+.header .header-area .area-1 {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.header .header-area .area-1 .title {
+    width: 500px;
+    height: 100%;
+    margin: 0;
+    font-size: 40pt;
     font-family: "Zen Kurenaido", sans-serif;
 }
 
-.header .header-area .title a {
+.header .header-area .area-1 .title a {
     text-decoration: none;
     color: black;
 }
 
-.header .header-area .header-nav {
+.header .header-area .area-1 .acount {
+    height: 100%;
+    width: 300px;
+    margin-right: 100px;
     display: flex;
-    align-items: flex-end;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .header-area .area-1 .acount .img-area {
+    height: 50px;
+    width: 50px;
+    border: 1px solid #aaa; 
+    border-radius: 100%;
+}
+
+.header .header-area .area-1 .acount .img-area .plofile-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.header .header-area .area-1 .acount .user-info {
+    font-size: 18px;
+}
+
+.header .header-area .header-nav {
+    width: 1200px;
+    height: 40px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    
 }
 
 .header .header-area .header-nav ul {
-    margin-bottom: 10px;
-    padding: 0;
+    height: 100%;
+    margin: 0 0 0 10px;
+    padding: 5px 10px;
     display: flex;
+    align-items: center;
     list-style: none;
     cursor: pointer;
 }
 
 .header .header-area .header-nav ul li {
-    width: 80px;
-}
-
-.header .header-area .header-nav ul li a {
-    text-decoration: none;
-    color: black;
-}
-
-.header .header-area .header-nav .log-on {
-    display: flex;
-    gap: 20px;
-}
-
-.header .header-area .header-nav .sign {
-    height: 40px;
-    width: 100px;
-    margin-bottom: 5px;
-    border: 1px solid #999;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px #ddd;
-    background-color: #d4e9f8;
-    transition-duration: 0.2s;
-}
-
-.header .header-area .header-nav .sign:hover{
-    background-color: var(--logincolor);
-    font-weight: bolder;
-}
-
-.header .header-area .acount {
     height: 100%;
-    width: 300px;
-    margin: 0 50px 0 0;
+    width: 180px;
+    text-align: center;
     display: flex;
-    align-items: flex-end;
-    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    transition-duration: .1s;
 }
 
-.header .header-area .acount .img-area {
-    height: 70px;
-    width: 70px;
-    border: 1px solid #aaa; 
-    border-radius: 100%;
+.header .header-area .header-nav ul li:hover {
+    background-color: #777;
+    color: #fff;
+    font-weight: bold;
 }
 
-.header .header-area .acount .img-area .plofile-img {
-    height: 70px;
-    width: 70px;
-    object-fit: cover;
-    border-radius: 100%;
-}
-
-.header .header-area .acount .user-info {
-    margin-bottom: 10px;
-    font-size: 18px;
+.header .header-area .header-nav .search-bar {
+    width: 400px;
+    height: 100%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
 }

@@ -71,7 +71,7 @@ const Filter = () => {
 
   return (
     <div className='filter'>
-      <div className='header'>
+      <div className='filter-header'>
         <h3>フィルタ</h3>
       </div>
       <div className='search-criteria'>

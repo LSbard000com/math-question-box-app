@@ -6,6 +6,7 @@ import { auth, db } from '../../Firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import { onAuthStateChanged, signOut, User } from 'firebase/auth'
 import PostButton from './PostButton'
+import SearchBar from './SearchBar'
 
 const Header = () => {
 
@@ -80,30 +81,43 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='header-area'>
-        <h1 className='title'><a href='/'>みんなの数学質問箱</a></h1>
+        <div className='area-1'>
+          <h1 className='title'><a href='/'>みんなの数学質問箱</a></h1>
+          <div className='acount'>
+              <div className='img-area'>
+                < img className='plofile-img' src={imageName} alt='アカウント' />
+              </div>
+              <div className='user-info'>{username} さん</div>
+          </div>
+        </div>
         <nav className='header-nav'>
           <ul>
-            <li><a href='/'>トップ</a></li>
-            {user ? <li onClick={handleMyPage}>マイページ</li> : null}
+            <li onClick={()=>navigate('/')}>
+              トップ
+            </li>
+            <li onClick={handleMyPage}>
+              マイページ
+            </li>
+            <li>
+            {user ? 
+              <div onClick={handleSignOut}>
+                サインアウト
+              </div>
+              :
+              <div onClick={() => navigate('/login')}>
+                サインイン
+              </div>
+            }
+            </li>
+            <li>
+              <PostButton />
+            </li>
           </ul>
-          {user ? 
-          <div className='log-on'>
-            <button className='sign' onClick={handleSignOut}>サインアウト</button>
-            <PostButton />
+          <div className='search-bar'>
+            <SearchBar />
           </div>
-          
-          :
-          <button className='sign' onClick={() => navigate('/login')}>サインイン</button>
-          }
-          <div className='acount'>
-            <div className='img-area'>
-              <img className='plofile-img' src={imageName} alt='アカウント' />
-            </div>
-            <div className='user-info'>{username} さん</div>
-        </div>
         </nav>
       </div>
-      
     </div>
   )
 }
