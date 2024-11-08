@@ -11,6 +11,7 @@ import ErrorPage from './components/ErrorPage';
 import ViewPost from './components/view/ViewPost';
 import Search from './components/search/Search';
 import AllPosts from './components/top/AllPosts';
+import Background from './components/public/Background';
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
     <div className='route'>
       <RouterProvider router={routes} />
     </div>
+    <Background />
   </ContextProvider>
   )
 }
