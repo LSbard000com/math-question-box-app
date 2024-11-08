@@ -5,7 +5,6 @@ import imageName from '../img/kkrn_icon_user_6.png'
 import { auth, db } from '../../Firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import { onAuthStateChanged, signOut, User } from 'firebase/auth'
-import PostButton from './PostButton'
 import SearchBar from './SearchBar'
 
 const Header = () => {
