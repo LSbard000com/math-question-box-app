@@ -174,7 +174,7 @@ const Search = () => {
 
   
     createQueryPosts(searchResults)
-  },[searchResults])
+  },[searchResults,navigate])
 
 
 

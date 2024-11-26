@@ -108,7 +108,7 @@ const MyQuestion:React.FC<ChildProps> = ({uid}) => {
     
     getMyQuestion()
     
-  },[uid,handleEdit])
+  },[uid,handleEdit,navigate])
 
 
 

@@ -72,7 +72,7 @@ const AllPosts = () => {
     
         allPosts()
         
-    },[])
+    },[navigate])
 
 
 
