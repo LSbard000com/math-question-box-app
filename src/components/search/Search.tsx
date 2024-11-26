@@ -55,16 +55,20 @@ const Search = () => {
   },[carriedWord])
  
 
-  // Fuseのインスタンスを設定
-  const fuse = new Fuse(posts, {
-    keys: ['content'],
-    threshold: 0.3
-  })
+
 
 
 
   // carriedWordをもとに検索結果を取得する関数
   useEffect(() => {
+
+    // Fuseのインスタンスを設定
+    const fuse = new Fuse(posts, {
+      keys: ['content'],
+      threshold: 0.3
+    })
+
+
     const getPostsDataFromCarriedWord = (query:string) => {
       if (query.trim()) {
         const results = fuse.search(query).map(result => result.item);
@@ -82,7 +86,7 @@ const Search = () => {
       getPostsDataFromCarriedWord(carriedWord)
     }
 
-  },[carriedWord,fuse,posts])
+  },[carriedWord,posts])
 
 
 
@@ -114,20 +118,20 @@ const Search = () => {
   },[carriedData])
 
 
-  
-  // 投稿文をクリックで閲覧ページへ
-  const navigate = useNavigate()
-  const handleViewPage = (id:string) => {
-    const viewId = `/view/${id}`
-    navigate(viewId)
-  }
-
-
 
   // postDataから検索結果を作成
   const [searchedPosts, setSearchedPosts] = useState<React.ReactNode>()
 
   useEffect(() => {
+    // 投稿文をクリックで閲覧ページへ
+    const navigate = useNavigate()
+    const handleViewPage = (id:string) => {
+      const viewId = `/view/${id}`
+      navigate(viewId)
+    }
+
+
+
     const createQueryPosts = (posts: PostData[]) => {
     const resultPosts = posts.map((doc) => {
         // 取得した投稿日時をDateオブジェクトに変換
@@ -169,7 +173,7 @@ const Search = () => {
 
   
     createQueryPosts(searchResults)
-  },[searchResults,handleViewPage])
+  },[searchResults])
 
 
 
