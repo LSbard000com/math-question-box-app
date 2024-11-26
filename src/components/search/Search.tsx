@@ -9,6 +9,9 @@ import Fuse from 'fuse.js'
 import { PostData } from '../../interface/Interface'
 
 const Search = () => {
+  const navigate = useNavigate()
+
+  
   // 渡された検索条件を取得
   const location = useLocation()
   const [carriedData, setCarriedData] = useState<string[]>([])
@@ -123,8 +126,6 @@ const Search = () => {
   const [searchedPosts, setSearchedPosts] = useState<React.ReactNode>()
 
   useEffect(() => {
-    // 投稿文をクリックで閲覧ページへ
-    const navigate = useNavigate()
     const handleViewPage = (id:string) => {
       const viewId = `/view/${id}`
       navigate(viewId)

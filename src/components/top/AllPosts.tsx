@@ -11,17 +11,14 @@ const AllPosts = () => {
     // すべての投稿を投稿日時順に表示
     const [posts, setPosts] = useState<React.ReactNode>()
 
+    const navigate = useNavigate()
 
     useEffect(() => {
-
-        // 投稿文をクリックで閲覧ページへ遷移
-        const navigate = useNavigate()
-
+        // 投稿文をクリックで閲覧ページへ
         const handleViewPage = (id:string) => {
             const viewId = `/view/${id}`
             navigate(viewId)
         }
-
 
 
         // カテゴリーをクリックでそのカテゴリを条件に検索ページへ
