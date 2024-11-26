@@ -21,52 +21,55 @@ const MyQuestion:React.FC<ChildProps> = ({uid}) => {
 
 
   // uidから自分の質問投稿を取得
-const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
+  const [myQuestion, setMyQuestion] = useState<React.ReactNode>()
 
-  const getMyQuestion = async () => {
-      if(uid){
-        const q = query(
-          collection(db, 'posts'),
-          where('userId', '==', uid),
-          orderBy('createdAt', 'desc')
-        )
-        const querySnapshot = await getDocs(q);
-
-        const questions = querySnapshot.docs.map((data)=>{
-          const timestamp = data.data().createdAt
-          const date = timestamp.toDate()
-          console.log(data.data())
-
-          return (
-            <div key={data.id}>
-              <div className='question-date'>
-                {date.toLocaleString('ja-JP', {
-                              year: 'numeric',
-                              month: '2-digit',
-                              day: '2-digit'
-                              
-                              })
-                }
-              </div>
-              <div className='question-content' onClick={()=>handleViewPage(data.id)}>
-                {data.data().content}
-              </div>
-              <div className='edit'>
-                <i className="fa-solid fa-pen" onClick={()=>handleEdit(data.data(), data.id)} ></i>
-                <i className="fa-solid fa-trash" onClick={()=>handleDelete(data.id)}></i>
-
-              </div>
-              <hr/>
-            </div>
-          )
-        })
-
-        setMyQuestion(questions)
-      } 
-  }
 
   useEffect(() => {
-      getMyQuestion()
+    const getMyQuestion = async () => {
+        if(uid){
+          const q = query(
+            collection(db, 'posts'),
+            where('userId', '==', uid),
+            orderBy('createdAt', 'desc')
+          )
+          const querySnapshot = await getDocs(q);
+
+          const questions = querySnapshot.docs.map((data)=>{
+            const timestamp = data.data().createdAt
+            const date = timestamp.toDate()
+            console.log(data.data())
+
+            return (
+              <div key={data.id}>
+                <div className='question-date'>
+                  {date.toLocaleString('ja-JP', {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit'
+                                
+                                })
+                  }
+                </div>
+                <div className='question-content' onClick={()=>handleViewPage(data.id)}>
+                  {data.data().content}
+                </div>
+                <div className='edit'>
+                  <i className="fa-solid fa-pen" onClick={()=>handleEdit(data.data(), data.id)} ></i>
+                  <i className="fa-solid fa-trash" onClick={()=>handleDelete(data.id)}></i>
+
+                </div>
+                <hr/>
+              </div>
+            )
+          })
+
+          setMyQuestion(questions)
+        } 
+    }
+
+    
+    getMyQuestion()
+    
   },[])
 
 

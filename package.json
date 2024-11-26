@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@sinonjs/text-encoding": "^0.7.3",
     "web-streams-polyfill": "^4.0.0"
   }

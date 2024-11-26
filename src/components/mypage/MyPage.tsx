@@ -15,23 +15,25 @@ const MyPage = () => {
   const { uid } = useParams<{ uid: string}>();
   const [userData, setUserData] = useState<UserProfile | null>(null)
 
-  const getUserData = async () => {
-    if(uid){
-      try {
-        const userDoc = await getDoc(doc(db, 'users', uid))
-        if(userDoc.exists()){
-          setUserData(userDoc.data() as UserProfile)
-        } else {
-          console.log("ユーザーが見つかりません")
+  useEffect(() => {
+    const getUserData = async () => {
+      if(uid){
+        try {
+          const userDoc = await getDoc(doc(db, 'users', uid))
+          if(userDoc.exists()){
+            setUserData(userDoc.data() as UserProfile)
+          } else {
+            console.log("ユーザーが見つかりません")
+          }
+        } catch(error) {
+          console.error('Error fetching user data:', error)
         }
-      } catch(error) {
-        console.error('Error fetching user data:', error)
       }
     }
-  }
 
-  useEffect(() => {
+
     getUserData()
+    
   },[uid])
 
 

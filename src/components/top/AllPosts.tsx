@@ -10,6 +10,8 @@ import PageTitle from '../public/PageTitle'
 const AllPosts = () => {
     // すべての投稿を投稿日時順に表示
     const [posts, setPosts] = useState<React.ReactNode>()
+
+    useEffect(() => {
         const allPosts = async () => {
             const postsQuery = query(
                 collection(db, 'posts'),
@@ -51,9 +53,10 @@ const AllPosts = () => {
         })
         
         setPosts(postElements)
-    }
-    useEffect(() => {
+        }
+    
         allPosts()
+        
     },[])
 
 

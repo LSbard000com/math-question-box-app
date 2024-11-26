@@ -18,7 +18,7 @@ const ContextProvider: React.FC<{ children: React.ReactNode }> = ({children}) =>
         setCurrentUser(user);
       });
       return () => unsubscribe()
-    },[auth])
+    },[])
 
   return (
     <AuthContext.Provider value={{currentUser}}>

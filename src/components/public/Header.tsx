@@ -24,28 +24,30 @@ const Header = () => {
 
   // ユーザー情報を取得
   const [username , setUsername] = useState<string|null>(null)
-  const getUsername = async () => {
-    try {
-      if(user) {
-        const uid = user.uid
-        const docRef = doc(db, "users", uid)
-        const docSnap = await getDoc(docRef)
-  
-        if(docSnap.exists()){
-          setUsername(docSnap.data().username)
-        } else {
-          setUsername("unknown")
-        }
-      } else {
-        setUsername("ゲスト")
-      }
-    } catch(error){
-      console.error("Error fetching user data:", error);
-    }
-  } 
 
   useEffect(() => {
+    const getUsername = async () => {
+      try {
+        if(user) {
+          const uid = user.uid
+          const docRef = doc(db, "users", uid)
+          const docSnap = await getDoc(docRef)
+    
+          if(docSnap.exists()){
+            setUsername(docSnap.data().username)
+          } else {
+            setUsername("unknown")
+          }
+        } else {
+          setUsername("ゲスト")
+        }
+      } catch(error){
+        console.error("Error fetching user data:", error);
+      }
+    } 
+
     getUsername()
+    
   },[user])
 
 

@@ -21,41 +21,45 @@ const ViewPost = () => {
   const [postContent, setPostContent] = useState<string>('')
   const [postCategory, setPostCategory] = useState<string[]>([])
   
-  const getPostData = async () => {
-    if(uid){
-      try {
-        const postDoc = await getDoc(doc(db, 'posts', uid))
-        if(postDoc.exists()){
-          setPostUserId(postDoc.data().userId)
-          setPostContent(postDoc.data().content)
-          setPostCategory(postDoc.data().categories)
-        }
-      } catch(error) {
-        if(error instanceof Error){
-          navigate('/error', {state: {message: error.message}})
-        } else {
-          navigate('/error', {state: {message: "予期せぬエラーが発生しました"}})
-        }
-     }
-    } 
-  }
+
   useEffect(() => {
+    const getPostData = async () => {
+      if(uid){
+        try {
+          const postDoc = await getDoc(doc(db, 'posts', uid))
+          if(postDoc.exists()){
+            setPostUserId(postDoc.data().userId)
+            setPostContent(postDoc.data().content)
+            setPostCategory(postDoc.data().categories)
+          }
+        } catch(error) {
+          if(error instanceof Error){
+            navigate('/error', {state: {message: error.message}})
+          } else {
+            navigate('/error', {state: {message: "予期せぬエラーが発生しました"}})
+          }
+      }
+      } 
+    }
+
     getPostData()
   },[uid])
 
   // 取得したポストデータから投稿したユーザーネームを取得
   const [postUserName, setPostUserName] = useState<string>('')
 
-  const getUserData = async () => {
-    if(postUserId){
-      const userDoc = await getDoc(doc(db, 'users', postUserId))
-      if(userDoc.exists()){
-        setPostUserName(userDoc.data().username)
+  useEffect(() => {
+    const getUserData = async () => {
+      if(postUserId){
+        const userDoc = await getDoc(doc(db, 'users', postUserId))
+        if(userDoc.exists()){
+          setPostUserName(userDoc.data().username)
+        }
       }
     }
-  }
-  useEffect(() => {
+
     getUserData()
+
   },[postUserId])
 
   // 回答するボタンで回答作成画面表示
@@ -73,6 +77,7 @@ const ViewPost = () => {
   // 回答のデータを取得
   const [answerPosts, setAnswerPosts] = useState<any[]>([])
 
+  useEffect(() => {
     const getAnswerData = async () => {
         try{
           const q = query(
@@ -96,7 +101,7 @@ const ViewPost = () => {
           }
         }
     }
-  useEffect(() => {
+
     getAnswerData()
   },[uid])
 
@@ -116,22 +121,21 @@ const ViewPost = () => {
 
   // 回答に対してユーザー名を追加した配列を作成
   const [answerPostsWithUsernames, setAnswerPostsWithUsernames] = useState<any[]>([])
-  const addUsernames = async () => {
-    const updateAnswers = await Promise.all(
-      answerPosts.map(async (data) => {
-        const username = await findAnswerUserName(data.userId)
-        return {...data, username}
-      })
-    )
-    setAnswerPostsWithUsernames(updateAnswers)
-  }
+
   useEffect(() => {
+    const addUsernames = async () => {
+      const updateAnswers = await Promise.all(
+        answerPosts.map(async (data) => {
+          const username = await findAnswerUserName(data.userId)
+          return {...data, username}
+        })
+      )
+      setAnswerPostsWithUsernames(updateAnswers)
+    }
+ 
     addUsernames();
   }, [answerPosts]);
 
-  useEffect(() => {
-    console.log(answerPostsWithUsernames)
-  },[answerPostsWithUsernames])
 
   return (
     <div>
@@ -139,7 +143,7 @@ const ViewPost = () => {
       <div className='post-view-area'>
         <div className='post-header'>
           <div className='user-img'>
-            <img src={imageName} />
+            <img src={imageName} alt='アカウント画像' />
           </div>
           <div className='user-name'>
             {postUserName} さんの質問

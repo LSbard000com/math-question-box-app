@@ -35,21 +35,23 @@ const Search = () => {
 
   // firestoreからpostsデータを取得
   const [posts, setPosts] = useState<PostData[]>([])
-  const fetchPosts = async () => {
-    const postRef = collection(db, 'posts')
-    const querySnapshot = await getDocs(postRef)
-    const postData = querySnapshot.docs.map((doc) => (
-      {
-        id: doc.id,
-        ...doc.data()
-      }
-    )) as PostData[]
-
-    setPosts(postData)
-  }
 
   useEffect(() => {
+    const fetchPosts = async () => {
+      const postRef = collection(db, 'posts')
+      const querySnapshot = await getDocs(postRef)
+      const postData = querySnapshot.docs.map((doc) => (
+        {
+          id: doc.id,
+          ...doc.data()
+        }
+      )) as PostData[]
+
+      setPosts(postData)
+    }
+
     fetchPosts()
+
   },[carriedWord])
  
 
@@ -62,48 +64,50 @@ const Search = () => {
 
 
   // carriedWordをもとに検索結果を取得する関数
-  const getPostsDataFromCarriedWord = (query:string) => {
-    if (query.trim()) {
-      const results = fuse.search(query).map(result => result.item);
-      setSearchResults(results);
-      // 検索件数をセット
-      getHitCount(results.length)
-    } else {
-      setSearchResults(posts); // 空のクエリで全件表示
-      // 検索件数をセット
-      getHitCount(posts.length)
-    }
-  }
-
   useEffect(() => {
+    const getPostsDataFromCarriedWord = (query:string) => {
+      if (query.trim()) {
+        const results = fuse.search(query).map(result => result.item);
+        setSearchResults(results);
+        // 検索件数をセット
+        getHitCount(results.length)
+      } else {
+        setSearchResults(posts); // 空のクエリで全件表示
+        // 検索件数をセット
+        getHitCount(posts.length)
+      }
+    }
+
     if(!(carriedWord.length === 0)){
       getPostsDataFromCarriedWord(carriedWord)
     }
+
   },[carriedWord])
 
 
 
   // carriedDataのidをもつpostデータを取得する関数
-  const getPostDataFromCarriedData = async (data:string[]) => {
-    const postRef = collection(db, 'posts')
-    const q = query(postRef, where('categories', 'array-contains-any', data))
-    const querySnapshot = await getDocs(q) 
-    
-    // 検索件数をセット
-    getHitCount(querySnapshot.size)
-
-    // 検索結果をセット
-    const results = querySnapshot.docs.map((doc) => (
-      {
-        id: doc.id,
-        ...doc.data()
-      }
-    )) as PostData[]
-
-    setSearchResults(results)
-  }
-
   useEffect(() => {
+    const getPostDataFromCarriedData = async (data:string[]) => {
+      const postRef = collection(db, 'posts')
+      const q = query(postRef, where('categories', 'array-contains-any', data))
+      const querySnapshot = await getDocs(q) 
+      
+      // 検索件数をセット
+      getHitCount(querySnapshot.size)
+
+      // 検索結果をセット
+      const results = querySnapshot.docs.map((doc) => (
+        {
+          id: doc.id,
+          ...doc.data()
+        }
+      )) as PostData[]
+
+      setSearchResults(results)
+    }
+
+  
     if(!(carriedData.length === 0)){
       getPostDataFromCarriedData(carriedData)
     }
@@ -122,48 +126,48 @@ const Search = () => {
 
   // postDataから検索結果を作成
   const [searchedPosts, setSearchedPosts] = useState<React.ReactNode>()
-  const createQueryPosts = (posts: PostData[]) => {
-  const resultPosts = posts.map((doc) => {
-      // 取得した投稿日時をDateオブジェクトに変換
-      const timestamp = doc.createdAt
-      const date = timestamp.toDate()
 
-      // 検索結果の投稿を作成
-      return (
-        <div key={doc.id} className='post'>
-          <div className='post-category'>
-              <ul>
-                  {doc.categories.map((id:string) => (
-                      <li key={id}>
-                          {findSubject(id)}
-                      </li>
-                  ))}
-              </ul>
-              
-          </div>
-          <div key={doc.id} onClick={()=>handleViewPage(doc.id)}  className='post-content'>
-              {doc.content}
-          </div>
-          <div className='post-time'>
-              {date.toLocaleString('ja-JP', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit'
-                  
-                  })
-                  }
-          </div>
-          <hr style={{ marginBottom: '20px'}}/>
-        </div>
-      )
-    })
-
-    setSearchedPosts(resultPosts)
-  }
-
-
-  // 投稿を作成して表示
   useEffect(() => {
+    const createQueryPosts = (posts: PostData[]) => {
+    const resultPosts = posts.map((doc) => {
+        // 取得した投稿日時をDateオブジェクトに変換
+        const timestamp = doc.createdAt
+        const date = timestamp.toDate()
+
+        // 検索結果の投稿を作成
+        return (
+          <div key={doc.id} className='post'>
+            <div className='post-category'>
+                <ul>
+                    {doc.categories.map((id:string) => (
+                        <li key={id}>
+                            {findSubject(id)}
+                        </li>
+                    ))}
+                </ul>
+                
+            </div>
+            <div key={doc.id} onClick={()=>handleViewPage(doc.id)}  className='post-content'>
+                {doc.content}
+            </div>
+            <div className='post-time'>
+                {date.toLocaleString('ja-JP', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                    
+                    })
+                    }
+            </div>
+            <hr style={{ marginBottom: '20px'}}/>
+          </div>
+        )
+      })
+
+      setSearchedPosts(resultPosts)
+    }
+
+  
     createQueryPosts(searchResults)
   },[searchResults])
 
