@@ -59,7 +59,7 @@ function App() {
     },
     {
       path: '/error',
-      element: <ErrorPage />　
+      element: <ErrorPage />
     }
   ])
 
