@@ -50,7 +50,7 @@ const MyPage = () => {
         <div className='mydata'>
           <div className='user-header'>
             <div className='plofile-img' >
-              <img src={imageName} />
+              <img src={imageName} alt='アカウント画像'/>
             </div>
             <div className='user-info'>
               <div className='useremail'>

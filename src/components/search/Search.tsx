@@ -82,7 +82,7 @@ const Search = () => {
       getPostsDataFromCarriedWord(carriedWord)
     }
 
-  },[carriedWord])
+  },[carriedWord,fuse,posts])
 
 
 
@@ -169,7 +169,7 @@ const Search = () => {
 
   
     createQueryPosts(searchResults)
-  },[searchResults])
+  },[searchResults,handleViewPage])
 
 
 

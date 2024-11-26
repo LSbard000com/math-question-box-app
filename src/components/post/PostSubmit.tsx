@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import '../css/PostSubmit.css'
 import { useNavigate } from 'react-router-dom'
 import { category } from '../public/CategoryData'

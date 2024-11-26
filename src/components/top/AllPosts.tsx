@@ -11,6 +11,23 @@ const AllPosts = () => {
     // すべての投稿を投稿日時順に表示
     const [posts, setPosts] = useState<React.ReactNode>()
 
+
+    
+    // 投稿文をクリックで閲覧ページへ遷移
+    const navigate = useNavigate()
+
+    const handleViewPage = (id:string) => {
+        const viewId = `/view/${id}`
+        navigate(viewId)
+    }
+
+
+
+    // カテゴリーをクリックでそのカテゴリを条件に検索ページへ
+    const handleViewPageOfCategoryClick = (id:string) => {
+        navigate('/search', {state: {data: [id], word: ''}})
+    }
+
     useEffect(() => {
         const allPosts = async () => {
             const postsQuery = query(
@@ -57,26 +74,9 @@ const AllPosts = () => {
     
         allPosts()
         
-    },[])
+    },[handleViewPage,handleViewPageOfCategoryClick])
 
 
-
-    // 投稿文をクリックで閲覧ページへ遷移
-    const navigate = useNavigate()
-
-    const handleViewPage = (id:string) => {
-        const viewId = `/view/${id}`
-        navigate(viewId)
-    }
-
-
-
-    // カテゴリーをクリックでそのカテゴリを条件に検索ページへ
-    const handleViewPageOfCategoryClick = (id:string) => {
-        navigate('/search', {state: {data: [id], word: ''}})
-    }
-
-    
 
   return (
     <>

@@ -152,7 +152,7 @@ const CreatePost = () => {
   const [textChecker, setTextChecker] = useState<boolean>(false)
   useEffect(() => {
     setTextChecker(text.length < minNum ? false : true)
-  },[text])
+  },[text, minNum])
 
   const [selctedChecker, setSelectedChecker] = useState<boolean>(false)
   useEffect(() => {

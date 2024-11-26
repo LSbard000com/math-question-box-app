@@ -43,7 +43,7 @@ const ViewPost = () => {
     }
 
     getPostData()
-  },[uid])
+  },[uid,navigate])
 
   // 取得したポストデータから投稿したユーザーネームを取得
   const [postUserName, setPostUserName] = useState<string>('')
@@ -64,6 +64,7 @@ const ViewPost = () => {
 
   // 回答するボタンで回答作成画面表示
   const [openCreateAnswer, setOpenCreateAnswer] = useState<boolean>(false)
+
   const handleAnswerButton = () => {
     // 認証状態によってログイン画面へ
     if(currentUser){
@@ -103,7 +104,7 @@ const ViewPost = () => {
     }
 
     getAnswerData()
-  },[uid])
+  },[uid,navigate])
 
   // 回答者のユーザー名を取得する関数
   const findAnswerUserName = async (userId: string) => {

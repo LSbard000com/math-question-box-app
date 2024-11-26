@@ -11,6 +11,44 @@ type ChildProps ={
 const MyAnswer:React.FC<ChildProps> = ({uid}) => {
     const navigate = useNavigate()
 
+        // 削除ボタンクリックで回答を削除
+        const handleDelete = async (answerId:string) => {
+          const confirmed = window.confirm("この投稿を削除しますか？この操作は取り消せません。")
+            if(!confirmed){
+              return
+            }
+          
+            try{
+              // 投稿の削除
+            const postDocRef = doc(db, 'answers', answerId)
+            await deleteDoc(postDocRef)
+      
+            alert("投稿が削除されました。");
+            } catch(error){
+              alert("削除中にエラーが発生しました。再度お試しください。");
+            }
+         }
+      
+      
+      
+  // 回答文クリックで投稿閲覧ページへ
+  const handleViewPage = (id:string) => {
+    const viewId = `/view/${id}`
+    navigate(viewId)
+  }
+
+        
+  // 編集ボタンで編集画面へ
+  const [edit, setEdit] = useState<boolean>(false)
+  const [editId, setEditId] = useState<string>('')
+  const [editData, setEditData] = useState<DocumentData | null>(null)
+  const handleEdit = (data:DocumentData, id:string) => {
+    setEdit(true)
+    setEditId(id)
+    setEditData(data)
+  }
+
+
 
     // uidから自分の回答投稿を取得
     const [myAnswer, setMyAnswer] = useState<React.ReactNode>()
@@ -58,49 +96,8 @@ const MyAnswer:React.FC<ChildProps> = ({uid}) => {
       }
 
     getMyQuestion()
-    
-    },[])
 
-
-
-    // 削除ボタンクリックで回答を削除
-    const handleDelete = async (answerId:string) => {
-    const confirmed = window.confirm("この投稿を削除しますか？この操作は取り消せません。")
-      if(!confirmed){
-        return
-      }
-    
-      try{
-        // 投稿の削除
-      const postDocRef = doc(db, 'answers', answerId)
-      await deleteDoc(postDocRef)
-
-      alert("投稿が削除されました。");
-      } catch(error){
-        alert("削除中にエラーが発生しました。再度お試しください。");
-      }
-   }
-
-
-
-   // 回答文クリックで投稿閲覧ページへ
-  const handleViewPage = (id:string) => {
-    const viewId = `/view/${id}`
-    navigate(viewId)
-  }
-
-
-
-    // 編集ボタンで編集画面へ
-  const [edit, setEdit] = useState<boolean>(false)
-  const [editId, setEditId] = useState<string>('')
-  const [editData, setEditData] = useState<DocumentData | null>(null)
-  const handleEdit = (data:DocumentData, id:string) => {
-    setEdit(true)
-    setEditId(id)
-    setEditData(data)
-  }
-
+    },[uid, handleViewPage, handleEdit, handleDelete])
   
     
   return (
